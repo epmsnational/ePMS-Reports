@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 24, 2021 11:43:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Highviralload" table="highviralload" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="patientId" type="string">
+            <column name="PatientID" length="45" />
+        </property>
+        <property name="firstSession" type="string">
+            <column name="firstSession" />
+        </property>
+        <property name="firstSessionDate" type="date">
+            <column name="firstSessionDate" length="10" />
+        </property>
+        <property name="firstSessionSummary" type="string">
+            <column name="firstSessionSummary" />
+        </property>
+        <property name="secondSession" type="string">
+            <column name="secondSession" />
+        </property>
+        <property name="arvIntake" type="string">
+            <column name="arvIntake" />
+        </property>
+        <property name="assessmentDate" type="date">
+            <column name="assessmentDate" length="10" />
+        </property>
+        <property name="counsellorName" type="string">
+            <column name="counsellorName" />
+        </property>
+        <property name="secondSessionDate" type="date">
+            <column name="secondSessionDate" length="10" />
+        </property>
+        <property name="secondSessionSummary" type="string">
+            <column name="secondSessionSummary" />
+        </property>
+        <property name="arvIntake2" type="string">
+            <column name="arvIntake2" />
+        </property>
+        <property name="extraSession" type="string">
+            <column name="extraSession" />
+        </property>
+        <property name="extraSessionDate" type="date">
+            <column name="extraSessionDate" length="10" />
+        </property>
+        <property name="extraSessionSummary" type="string">
+            <column name="extraSessionSummary" />
+        </property>
+        <property name="arvIntake3" type="string">
+            <column name="arvIntake3" />
+        </property>
+        <property name="repeatedVlDate" type="date">
+            <column name="repeatedVlDate" length="10" />
+        </property>
+        <property name="viralLoadResult" type="string">
+            <column name="viralLoadResult" />
+        </property>
+        <property name="arvRegimenValuation" type="string">
+            <column name="arvRegimenValuation" />
+        </property>
+        <property name="nurseName" type="string">
+            <column name="nurseName" />
+        </property>
+        <property name="nurseAssessmentDate" type="date">
+            <column name="nurseAssessmentDate" length="10" />
+        </property>
+        <property name="regimenValuation" type="string">
+            <column name="RegimenValuation" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" />
+        </property>
+        <property name="doctorName" type="string">
+            <column name="doctorName" />
+        </property>
+        <property name="doctorDate" type="date">
+            <column name="doctorDate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

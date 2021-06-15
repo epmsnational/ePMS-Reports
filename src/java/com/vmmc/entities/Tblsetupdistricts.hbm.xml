@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupdistricts" table="tblsetupdistricts" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblsetupdistrictsId">
+            <key-property name="regionCode" type="int">
+                <column name="RegionCode" />
+            </key-property>
+            <key-property name="districtCode" type="string">
+                <column name="DistrictCode" length="1" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tblsetupregions" class="com.vmmc.entities.Tblsetupregions" update="false" insert="false" fetch="select">
+            <column name="RegionCode" not-null="true" />
+        </many-to-one>
+        <property name="district" type="string">
+            <column name="District" />
+        </property>
+    </class>
+</hibernate-mapping>

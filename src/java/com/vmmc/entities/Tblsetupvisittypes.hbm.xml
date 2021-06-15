@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupvisittypes" table="tblsetupvisittypes" catalog="zimepms" optimistic-lock="version">
+        <id name="visitTypeCode" type="string">
+            <column name="VisitTypeCode" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="visitType" type="string">
+            <column name="VisitType" length="15" />
+        </property>
+        <property name="visitTypeLong" type="string">
+            <column name="VisitTypeLong" length="100" />
+        </property>
+        <property name="theOrder" type="java.lang.Integer">
+            <column name="TheOrder" />
+        </property>
+        <property name="forStandard" type="java.lang.Integer">
+            <column name="ForStandard" />
+        </property>
+        <property name="forInfants" type="java.lang.Integer">
+            <column name="ForInfants" />
+        </property>
+        <property name="dsdclinical" type="java.lang.Integer">
+            <column name="DSDclinical" />
+        </property>
+        <property name="dsdrefil" type="java.lang.Integer">
+            <column name="DSDRefil" />
+        </property>
+    </class>
+</hibernate-mapping>

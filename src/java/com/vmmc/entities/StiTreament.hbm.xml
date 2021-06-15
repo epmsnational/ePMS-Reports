@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.StiTreament" table="sti_treament" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stiNumber" type="string">
+            <column name="sti_number" length="45" />
+        </property>
+        <property name="treatmentdate" type="date">
+            <column name="treatmentdate" length="10" />
+        </property>
+        <property name="typeofsti" type="string">
+            <column name="typeofsti" length="225" />
+        </property>
+        <property name="duration" type="string">
+            <column name="duration" />
+        </property>
+        <property name="dose" type="string">
+            <column name="Dose" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

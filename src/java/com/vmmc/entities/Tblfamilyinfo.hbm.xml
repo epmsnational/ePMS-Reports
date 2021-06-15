@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblfamilyinfo" table="tblfamilyinfo" catalog="zimepms" optimistic-lock="version">
+        <id name="theId" type="int">
+            <column name="TheID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tblfamilyrelatives" class="com.vmmc.entities.Tblfamilyrelatives" fetch="select">
+            <column name="RelativeID" />
+        </many-to-one>
+        <many-to-one name="tblpatients" class="com.vmmc.entities.Tblpatients" fetch="select">
+            <column name="PatientID" length="21" />
+        </many-to-one>
+        <property name="relativeType" type="string">
+            <column name="RelativeType" length="50" />
+        </property>
+        <property name="relativeAtThisClinic" type="string">
+            <column name="RelativeAtThisClinic" length="3" />
+        </property>
+        <property name="relativeCtcid" type="string">
+            <column name="RelativeCTCID" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

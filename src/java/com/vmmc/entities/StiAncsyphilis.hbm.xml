@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.StiAncsyphilis" table="sti_ancsyphilis" catalog="zimepms" optimistic-lock="version">
+        <id name="stinumber" type="string">
+            <column name="STINumber" />
+            <generator class="assigned" />
+        </id>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" not-null="true" />
+        </property>
+        <property name="dateOfRegistration" type="date">
+            <column name="DateOfRegistration" length="10" />
+        </property>
+        <property name="screenedForSyphilis" type="string">
+            <column name="ScreenedForSyphilis" length="4" />
+        </property>
+        <property name="syphilisResult" type="string">
+            <column name="SyphilisResult" length="4" />
+        </property>
+        <property name="syphilisTreated" type="string">
+            <column name="SyphilisTreated" length="4" />
+        </property>
+        <property name="sexualHistory" type="string">
+            <column name="SexualHistory" />
+        </property>
+        <property name="episode" type="string">
+            <column name="Episode" length="45" />
+        </property>
+        <property name="stisyndrome" type="string">
+            <column name="STISyndrome" />
+        </property>
+        <property name="testedForSyphilis" type="string">
+            <column name="TestedForSyphilis" length="4" />
+        </property>
+        <property name="purposeOfSyphilisTesting" type="string">
+            <column name="PurposeOfSyphilisTesting" />
+        </property>
+        <property name="syphilisTestResult" type="string">
+            <column name="SyphilisTestResult" length="4" />
+        </property>
+        <property name="treatment" type="string">
+            <column name="Treatment" />
+        </property>
+        <property name="testedForHiv" type="string">
+            <column name="TestedForHiv" length="4" />
+        </property>
+        <property name="hivTestResult" type="string">
+            <column name="HivTestResult" length="4" />
+        </property>
+        <property name="stiContactSlipIssued" type="string">
+            <column name="StiContactSlipIssued" length="4" />
+        </property>
+        <property name="stiContactSlipReceived" type="string">
+            <column name="StiContactSlipReceived" length="4" />
+        </property>
+        <property name="condomInformationGiven" type="string">
+            <column name="CondomInformationGiven" length="4" />
+        </property>
+        <property name="condomsIssued" type="string">
+            <column name="CondomsIssued" length="4" />
+        </property>
+        <property name="comments" type="string">
+            <column name="Comments" />
+        </property>
+    </class>
+</hibernate-mapping>

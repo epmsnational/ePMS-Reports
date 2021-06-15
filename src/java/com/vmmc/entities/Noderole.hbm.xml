@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Noderole" table="noderole" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nodeId" type="java.lang.Integer">
+            <column name="NodeID" />
+        </property>
+        <property name="roleId" type="java.lang.Integer">
+            <column name="RoleID" />
+        </property>
+        <property name="viewAllowed" type="java.lang.Boolean">
+            <column name="ViewAllowed" />
+        </property>
+        <property name="editAllowed" type="java.lang.Boolean">
+            <column name="EditAllowed" />
+        </property>
+    </class>
+</hibernate-mapping>

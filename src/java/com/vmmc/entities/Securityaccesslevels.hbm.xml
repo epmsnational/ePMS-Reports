@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Securityaccesslevels" table="securityaccesslevels" catalog="zimepms" optimistic-lock="version">
+        <id name="accessLevel" type="int">
+            <column name="AccessLevel" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="string">
+            <column name="Description" length="50" />
+        </property>
+        <property name="enterSecurity" type="java.lang.Byte">
+            <column name="EnterSecurity" />
+        </property>
+        <property name="enterUtilities" type="java.lang.Byte">
+            <column name="EnterUtilities" />
+        </property>
+        <property name="enterPrintouts" type="java.lang.Byte">
+            <column name="EnterPrintouts" />
+        </property>
+        <property name="enterSetup" type="java.lang.Byte">
+            <column name="EnterSetup" />
+        </property>
+        <property name="enterDataEntryDispensing" type="java.lang.Byte">
+            <column name="EnterDataEntryDispensing" />
+        </property>
+        <property name="enterDataEntry" type="java.lang.Byte">
+            <column name="EnterDataEntry" />
+        </property>
+        <property name="enterPrintoutsSpecial" type="java.lang.Byte">
+            <column name="EnterPrintoutsSpecial" />
+        </property>
+    </class>
+</hibernate-mapping>

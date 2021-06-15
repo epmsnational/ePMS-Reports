@@ -1,0 +1,26 @@
+ALTER TABLE `zimepms`.`tblsetupiptreasoncodes` 
+CHANGE COLUMN `IPTReasonCode` `TptID` INT(11) NOT NULL ;
+
+ALTER TABLE `zimepms`.`tblsetupiptreasoncodes` 
+ADD COLUMN `IPTReasonCode` VARCHAR(45) NULL DEFAULT NULL AFTER `IPTReason`;
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='C' WHERE `TptID`='8';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AT' WHERE `TptID`='1';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AL' WHERE `TptID`='5';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='CPT' WHERE `TptID`='3';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SAE' WHERE `TptID`='9';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AA' WHERE `TptID`='6';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SA' WHERE `TptID`='4';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='ON' WHERE `TptID`='2';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SR' WHERE `TptID`='10';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AE' WHERE `TptID`='11';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='O' WHERE `TptID`='7';
+
+ALTER TABLE `zimepms`.`tblvisits` 
+ADD COLUMN `VisitStatusCode` VARCHAR(5) NULL DEFAULT NULL AFTER `VisitTypeCode`;
+
+UPDATE `zimepms`.`tblsetupvisitstatus` SET `visitstatusdescription`='Lost to Follow up greater or equal 90' WHERE `visitstatuscode`='LO';
+
+delete from zimepms.setupstaff;
+
+INSERT INTO `zimepms`.`tblsetupstatus` (`Status`, `StatusCode`,`ForStandard`) VALUES ('Other(Specify)', 'O','-1');

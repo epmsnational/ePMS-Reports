@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupdispensers" table="tblsetupdispensers" catalog="zimepms" optimistic-lock="version">
+        <id name="dispenserId" type="int">
+            <column name="DispenserID" />
+            <generator class="assigned" />
+        </id>
+        <property name="dispenserFirstName" type="string">
+            <column name="DispenserFirstName" length="50" />
+        </property>
+        <property name="dispenserSurname" type="string">
+            <column name="DispenserSurname" length="50" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <set name="tbldispenses" table="tbldispense" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DispenserID" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tbldispense" />
+        </set>
+    </class>
+</hibernate-mapping>

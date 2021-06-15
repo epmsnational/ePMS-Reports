@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcPostprocedureassessment" table="vmmc_postprocedureassessment" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="bloodPressure" type="string">
+            <column name="BloodPressure" />
+        </property>
+        <property name="pulse" type="java.lang.Double">
+            <column name="Pulse" precision="255" scale="0" />
+        </property>
+        <property name="prePexDevicePlaced" type="string">
+            <column name="PrePexDevicePlaced" length="11" />
+        </property>
+        <property name="clientProvideedInstruction" type="string">
+            <column name="ClientProvideedInstruction" length="11" />
+        </property>
+        <property name="givenMcclientCard" type="string">
+            <column name="GivenMCClientCard" length="11" />
+        </property>
+        <property name="analgesiaGiven" type="string">
+            <column name="AnalgesiaGiven" length="11" />
+        </property>
+        <property name="drug" type="string">
+            <column name="Drug" />
+        </property>
+        <property name="generalCondition" type="string">
+            <column name="GeneralCondition" />
+        </property>
+        <property name="nextVisitDate" type="date">
+            <column name="NextVisitDate" length="10" />
+        </property>
+        <property name="dischargedBy" type="string">
+            <column name="DischargedBy" />
+        </property>
+    </class>
+</hibernate-mapping>

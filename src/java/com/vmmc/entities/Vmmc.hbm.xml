@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Vmmc" table="vmmc" catalog="zimepms" optimistic-lock="version">
+        <id name="vmmcnumber" type="string">
+            <column name="VMMCNumber" />
+            <generator class="assigned" />
+        </id>
+        <property name="typeofFacility" type="string">
+            <column name="TypeofFacility" />
+        </property>
+        <property name="facilityCode" type="string">
+            <column name="FacilityCode" />
+        </property>
+        <property name="comment" type="string">
+            <column name="Comment" length="65535" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+    </class>
+</hibernate-mapping>

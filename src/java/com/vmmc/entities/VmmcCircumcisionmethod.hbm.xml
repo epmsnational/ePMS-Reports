@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcCircumcisionmethod" table="vmmc_circumcisionmethod" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="patientType" type="string">
+            <column name="PatientType" />
+        </property>
+        <property name="informedConsentGranted" type="string">
+            <column name="InformedConsentGranted" length="10" />
+        </property>
+        <property name="adultsClinicianInitials" type="string">
+            <column name="AdultsClinicianInitials" />
+        </property>
+        <property name="parentSignature" type="string">
+            <column name="ParentSignature" length="10" />
+        </property>
+        <property name="minorsClinicanInitials" type="string">
+            <column name="MinorsClinicanInitials" />
+        </property>
+        <property name="consentObtainedBy" type="string">
+            <column name="ConsentObtainedBy" />
+        </property>
+        <property name="circumcisionMethod" type="string">
+            <column name="CircumcisionMethod" />
+        </property>
+        <property name="circumcisionChosenByClients" type="string">
+            <column name="CircumcisionChosenByClients" />
+        </property>
+        <property name="otherEligibleSpecify" type="string">
+            <column name="OtherEligibleSpecify" />
+        </property>
+        <property name="otherAppropriateSpecify" type="string">
+            <column name="OtherAppropriateSpecify" />
+        </property>
+    </class>
+</hibernate-mapping>

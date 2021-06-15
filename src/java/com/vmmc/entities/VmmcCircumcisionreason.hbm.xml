@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcCircumcisionreason" table="vmmc_circumcisionreason" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="circumcisionReasonTypeId" type="java.lang.Integer">
+            <column name="CircumcisionReasonType_Id" />
+        </property>
+        <property name="specifyOtherReasons" type="string">
+            <column name="SpecifyOtherReasons" />
+        </property>
+        <property name="reasonsDescription" type="string">
+            <column name="ReasonsDescription" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 7, 2020 1:49:55 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Facilities" table="facilities" catalog="zimepms" optimistic-lock="version">
+        <id name="facilityId" type="java.lang.Integer">
+            <column name="FacilityID" />
+            <generator class="identity" />
+        </id>
+        <property name="provinceCode" type="int">
+            <column name="ProvinceCode" not-null="true" />
+        </property>
+        <property name="districtCode" type="string">
+            <column name="DistrictCode" length="45" not-null="true" />
+        </property>
+        <property name="facilityCode" type="string">
+            <column name="FacilityCode" length="45" not-null="true" />
+        </property>
+        <property name="facilityName" type="string">
+            <column name="FacilityName" length="90" not-null="true" />
+        </property>
+        <property name="fullFacilityCode" type="string">
+            <column name="FullFacilityCode" length="45" not-null="true" />
+        </property>
+        <property name="fullFacilityCodeDashes" type="string">
+            <column name="FullFacilityCodeDashes" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

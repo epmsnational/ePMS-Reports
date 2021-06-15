@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblexposedinfants" table="tblexposedinfants" catalog="zimepms" optimistic-lock="version">
+        <id name="exposedInfantId" type="string">
+            <column name="ExposedInfantID" length="25" />
+            <generator class="assigned" />
+        </id>
+        <property name="motherPatientId" type="string">
+            <column name="MotherPatientID" length="21" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="FullName" />
+        </property>
+        <property name="sex" type="string">
+            <column name="Sex" length="6" />
+        </property>
+        <property name="dateOfBirth" type="timestamp">
+            <column name="DateOfBirth" length="19" />
+        </property>
+        <property name="infantStatusCode" type="string">
+            <column name="InfantStatusCode" length="3" />
+        </property>
+        <property name="infantStatusDate" type="timestamp">
+            <column name="InfantStatusDate" length="19" />
+        </property>
+        <property name="childPatientId" type="string">
+            <column name="ChildPatientID" length="21" />
+        </property>
+        <property name="dateOfDeath" type="timestamp">
+            <column name="DateOfDeath" length="19" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <property name="theTimeStamp" type="timestamp">
+            <column name="TheTimeStamp" length="19" />
+        </property>
+        <property name="modeOfDelivery" type="string">
+            <column name="ModeOfDelivery" length="45" />
+        </property>
+        <property name="placeOfDelivery" type="string">
+            <column name="PlaceOfDelivery" length="45" />
+        </property>
+        <property name="registrationDate" type="date">
+            <column name="RegistrationDate" length="10" />
+        </property>
+        <set name="tblexposedinfantvisitses" table="tblexposedinfantvisits" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ExposedInfantID" length="25" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblexposedinfantvisits" />
+        </set>
+        <set name="tblexposedinfanttestses" table="tblexposedinfanttests" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ExposedInfantID" length="25" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblexposedinfanttests" />
+        </set>
+    </class>
+</hibernate-mapping>

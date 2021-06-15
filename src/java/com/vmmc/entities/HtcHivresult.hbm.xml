@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 24, 2020 9:48:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.HtcHivresult" table="htc_hivresult" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="htcnumber" type="string">
+            <column name="HTCNumber" />
+        </property>
+        <property name="testKit" type="string">
+            <column name="TestKit" />
+        </property>
+        <property name="lotNumber" type="string">
+            <column name="LotNumber" />
+        </property>
+        <property name="isRetest" type="java.lang.Boolean">
+            <column name="isRetest" />
+        </property>
+        <property name="testCategory" type="java.lang.Integer">
+            <column name="TestCategory" />
+        </property>
+        <property name="result" type="string">
+            <column name="result" />
+        </property>
+        <property name="expireDate" type="timestamp">
+            <column name="ExpireDate" length="19" />
+        </property>
+        <property name="starttime" type="string">
+            <column name="starttime" length="8" />
+        </property>
+        <property name="readingtime" type="string">
+            <column name="readingtime" length="8" />
+        </property>
+        <property name="dob" type="date">
+            <column name="DOB" length="10" />
+        </property>
+        <property name="sex" type="string">
+            <column name="Sex" length="45" />
+        </property>
+        <property name="dateofRegistration" type="date">
+            <column name="DateofRegistration" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

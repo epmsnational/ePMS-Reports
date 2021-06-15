@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 22, 2020 11:20:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Laboratory" table="laboratory" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="patientId" type="string">
+            <column name="PatientID" length="45" />
+        </property>
+        <property name="testType" type="string">
+            <column name="TestType" length="45" />
+        </property>
+        <property name="testDate" type="date">
+            <column name="TestDate" length="10" />
+        </property>
+        <property name="receivedDate" type="date">
+            <column name="ReceivedDate" length="10" />
+        </property>
+        <property name="patientReceivedDate" type="date">
+            <column name="PatientReceivedDate" length="10" />
+        </property>
+        <property name="result" type="java.lang.Integer">
+            <column name="Result" />
+        </property>
+    </class>
+</hibernate-mapping>

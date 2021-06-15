@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupregions" table="tblsetupregions" catalog="zimepms" optimistic-lock="version">
+        <id name="regionCode" type="int">
+            <column name="RegionCode" />
+            <generator class="assigned" />
+        </id>
+        <property name="region" type="string">
+            <column name="Region" />
+        </property>
+        <set name="tblsetupdistrictses" table="tblsetupdistricts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RegionCode" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblsetupdistricts" />
+        </set>
+    </class>
+</hibernate-mapping>

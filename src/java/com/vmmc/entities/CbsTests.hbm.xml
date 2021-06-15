@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 25, 2021 10:43:50 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.CbsTests" table="cbs_tests" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" not-null="true" />
+        </property>
+        <property name="htcnumber" type="string">
+            <column name="HTCNumber" />
+        </property>
+        <property name="recencyTesting" type="string">
+            <column name="recencyTesting" length="45" />
+        </property>
+        <property name="recencyTesterName" type="string">
+            <column name="recencyTesterName" length="45" />
+        </property>
+        <property name="recencyTestingDate" type="date">
+            <column name="recencyTestingDate" length="10" />
+        </property>
+        <property name="recencyTestingResult" type="string">
+            <column name="recencyTestingResult" length="45" />
+        </property>
+        <property name="recencyTestingNotDone" type="string">
+            <column name="recencyTestingNotDone" length="45" />
+        </property>
+        <property name="dateHivDiagnosed" type="date">
+            <column name="dateHivDiagnosed" length="10" />
+        </property>
+        <property name="firstTestMethod" type="string">
+            <column name="firstTestMethod" length="45" />
+        </property>
+        <property name="firstTestResult" type="string">
+            <column name="firstTestResult" length="10" />
+        </property>
+        <property name="secondTestMethod" type="string">
+            <column name="SecondTestMethod" length="45" />
+        </property>
+        <property name="secondTestResult" type="string">
+            <column name="SecondTestResult" length="10" />
+        </property>
+        <property name="whoStageAtNotification" type="string">
+            <column name="WhoStageAtNotification" length="45" />
+        </property>
+        <property name="whoStage" type="string">
+            <column name="WhoStage" length="45" />
+        </property>
+        <property name="cdCountTest" type="string">
+            <column name="CdCountTest" length="45" />
+        </property>
+        <property name="cdCountResult" type="java.lang.Integer">
+            <column name="CdCountResult" />
+        </property>
+        <property name="cdCountPercentage" type="java.lang.Integer">
+            <column name="CdCountPercentage" />
+        </property>
+        <property name="cdCountTestDate" type="date">
+            <column name="CdCountTestDate" length="10" />
+        </property>
+        <property name="motherViralloadFirstTest" type="string">
+            <column name="MotherViralloadFirstTest" length="45" />
+        </property>
+        <property name="motherViralloadFirstTestResult" type="java.lang.Integer">
+            <column name="MotherViralloadFirstTestResult" />
+        </property>
+        <property name="motherViralloadFirstTestDate" type="date">
+            <column name="MotherViralloadFirstTestDate" length="10" />
+        </property>
+        <property name="motherViralloadSecondTest" type="string">
+            <column name="MotherViralloadSecondTest" length="45" />
+        </property>
+        <property name="motherViralloadSecondTestResult" type="java.lang.Integer">
+            <column name="MotherViralloadSecondTestResult" />
+        </property>
+        <property name="motherViralloadSecondTestDate" type="date">
+            <column name="MotherViralloadSecondTestDate" length="10" />
+        </property>
+        <property name="dateFormCompleted" type="date">
+            <column name="dateFormCompleted" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblbaselinetests" table="tblbaselinetests" catalog="zimepms" optimistic-lock="version">
+        <id name="theId" type="java.lang.Integer">
+            <column name="TheID" />
+            <generator class="identity" />
+        </id>
+        <property name="patientId" type="string">
+            <column name="PatientID" length="21" not-null="true" />
+        </property>
+        <property name="testTypeId" type="string">
+            <column name="TestTypeID" length="3" />
+        </property>
+        <property name="testDate" type="timestamp">
+            <column name="TestDate" length="19" />
+        </property>
+        <property name="resultDate" type="timestamp">
+            <column name="ResultDate" length="19" />
+        </property>
+        <property name="resultNumeric" type="string">
+            <column name="ResultNumeric" length="10" />
+        </property>
+        <property name="resultNotes" type="string">
+            <column name="ResultNotes" />
+        </property>
+        <property name="dateOfEnrolment" type="date">
+            <column name="DateOfEnrolment" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

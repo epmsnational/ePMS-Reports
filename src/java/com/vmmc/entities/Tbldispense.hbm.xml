@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tbldispense" table="tbldispense" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TbldispenseId">
+            <key-property name="msdcode" type="string">
+                <column name="MSDCode" length="8" />
+            </key-property>
+            <key-property name="dispenseDate" type="timestamp">
+                <column name="DispenseDate" length="19" />
+            </key-property>
+            <key-property name="patientId" type="string">
+                <column name="PatientID" length="25" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tblsetupdispensers" class="com.vmmc.entities.Tblsetupdispensers" fetch="select">
+            <column name="DispenserID" />
+        </many-to-one>
+        <property name="fullFacilityCode" type="string">
+            <column name="FullFacilityCode" length="8" />
+        </property>
+        <property name="transit" type="java.lang.Integer">
+            <column name="Transit" />
+        </property>
+        <property name="quantity" type="java.lang.Integer">
+            <column name="Quantity" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <property name="dispenseOrder" type="java.lang.Integer">
+            <column name="DispenseOrder" />
+        </property>
+    </class>
+</hibernate-mapping>

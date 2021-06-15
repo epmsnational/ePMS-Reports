@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcRiskreductionplan" table="vmmc_riskreductionplan" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="visitId" type="java.lang.Integer">
+            <column name="VisitID" />
+        </property>
+        <property name="riskReductionPlanTypeId" type="java.lang.Integer">
+            <column name="RiskReductionPlanType_Id" />
+        </property>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

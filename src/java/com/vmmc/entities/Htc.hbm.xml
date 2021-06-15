@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 25, 2021 10:43:50 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Htc" table="htc" catalog="zimepms" optimistic-lock="version">
+        <id name="htcnumber" type="string">
+            <column name="HTCNumber" />
+            <generator class="assigned" />
+        </id>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="dateofRegistration" type="date">
+            <column name="DateofRegistration" length="10" />
+        </property>
+        <property name="coupleTo" type="string">
+            <column name="CoupleTo" />
+        </property>
+        <property name="isCouple" type="string">
+            <column name="isCouple" length="4" />
+        </property>
+        <property name="htcapproach" type="string">
+            <column name="HTCApproach" />
+        </property>
+        <property name="htcmodelId" type="java.lang.Integer">
+            <column name="HTCModel_Id" />
+        </property>
+        <property name="counselingRecieved" type="string">
+            <column name="CounselingRecieved" />
+        </property>
+        <property name="optedOut" type="string">
+            <column name="OptedOut" />
+        </property>
+        <property name="nameofCounselor" type="string">
+            <column name="NameofCounselor" />
+        </property>
+        <property name="recievedResult" type="string">
+            <column name="RecievedResult" />
+        </property>
+        <property name="postTestCounseled" type="string">
+            <column name="PostTestCounseled" />
+        </property>
+        <property name="postTestCounselDate" type="date">
+            <column name="PostTestCounselDate" length="10" />
+        </property>
+        <property name="refferedforService" type="string">
+            <column name="RefferedforService" />
+        </property>
+        <property name="testPurposeTypeId" type="java.lang.Integer">
+            <column name="TestPurposeType_ID" />
+        </property>
+        <property name="referredFromTypeId" type="java.lang.Integer">
+            <column name="ReferredFromType_ID" />
+        </property>
+        <property name="testedBefore" type="string">
+            <column name="tested_before" />
+        </property>
+        <property name="currentPregnancyLactation" type="string">
+            <column name="current_pregnancy_lactation" />
+        </property>
+        <property name="dateTestedBefore" type="timestamp">
+            <column name="date_tested_before" length="19" />
+        </property>
+        <property name="entryPointId" type="java.lang.Integer">
+            <column name="EntryPointID" />
+        </property>
+        <property name="finalResultType" type="string">
+            <column name="FinalResultType" />
+        </property>
+        <property name="performedBy" type="string">
+            <column name="PerformedBy" />
+        </property>
+        <property name="notified" type="string">
+            <column name="notified" length="4" />
+        </property>
+    </class>
+</hibernate-mapping>

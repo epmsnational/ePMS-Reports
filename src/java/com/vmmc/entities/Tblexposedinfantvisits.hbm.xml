@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblexposedinfantvisits" table="tblexposedinfantvisits" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblexposedinfantvisitsId">
+            <key-property name="exposedInfantId" type="string">
+                <column name="ExposedInfantID" length="25" />
+            </key-property>
+            <key-property name="visitDate" type="timestamp">
+                <column name="VisitDate" length="19" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tblexposedinfants" class="com.vmmc.entities.Tblexposedinfants" update="false" insert="false" fetch="select">
+            <column name="ExposedInfantID" length="25" not-null="true" />
+        </many-to-one>
+        <property name="visitTypeCode" type="string">
+            <column name="VisitTypeCode" length="2" />
+        </property>
+        <property name="weight" type="java.lang.Double">
+            <column name="Weight" precision="22" scale="0" />
+        </property>
+        <property name="feedingPracticeId" type="string">
+            <column name="FeedingPracticeID" length="8" />
+        </property>
+        <property name="immunizationsUpToDate" type="java.lang.Integer">
+            <column name="ImmunizationsUpToDate" />
+        </property>
+        <property name="nextVisitDate" type="timestamp">
+            <column name="NextVisitDate" length="19" />
+        </property>
+        <property name="staffId" type="java.lang.Integer">
+            <column name="StaffID" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <property name="theTimeStamp" type="timestamp">
+            <column name="TheTimeStamp" length="19" />
+        </property>
+        <property name="cotriSupplied" type="string">
+            <column name="CotriSupplied" length="4" />
+        </property>
+        <property name="nvpsupplied" type="string">
+            <column name="NVPSupplied" length="4" />
+        </property>
+        <property name="typeOfHivtestCode" type="string">
+            <column name="TypeOfHIVTestCode" length="2" />
+        </property>
+        <property name="hivtestResult" type="string">
+            <column name="HIVTestResult" length="10" />
+        </property>
+        <property name="hivresultIssued" type="string">
+            <column name="HIVResultIssued" length="4" />
+        </property>
+        <property name="comments" type="string">
+            <column name="Comments" />
+        </property>
+        <set name="tblexposedinfantproblemses" table="tblexposedinfantproblems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ExposedInfantID" length="25" not-null="true" />
+                <column name="VisitDate" length="19" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblexposedinfantproblems" />
+        </set>
+        <set name="tblexposedinfantmedications" table="tblexposedinfantmedication" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ExposedInfantID" length="25" not-null="true" />
+                <column name="VisitDate" length="19" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblexposedinfantmedication" />
+        </set>
+    </class>
+</hibernate-mapping>

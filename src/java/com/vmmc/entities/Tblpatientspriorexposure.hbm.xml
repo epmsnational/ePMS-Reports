@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblpatientspriorexposure" table="tblpatientspriorexposure" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblpatientspriorexposureId">
+            <key-property name="patientId" type="string">
+                <column name="PatientID" length="21" />
+            </key-property>
+            <key-property name="drugTypeId" type="string">
+                <column name="DrugTypeID" length="3" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tblpatients" class="com.vmmc.entities.Tblpatients" update="false" insert="false" fetch="select">
+            <column name="PatientID" length="21" not-null="true" />
+        </many-to-one>
+        <property name="regimenCode" type="java.lang.Integer">
+            <column name="RegimenCode" />
+        </property>
+        <property name="dateStarted" type="timestamp">
+            <column name="DateStarted" length="19" />
+        </property>
+        <property name="dateLastTakenOrCompleted" type="timestamp">
+            <column name="DateLastTakenOrCompleted" length="19" />
+        </property>
+        <property name="notes" type="string">
+            <column name="Notes" />
+        </property>
+    </class>
+</hibernate-mapping>

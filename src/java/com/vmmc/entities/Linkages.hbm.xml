@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Linkages" table="linkages" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="patientId" type="int">
+            <column name="PatientID" not-null="true" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" length="225" not-null="true" />
+        </property>
+        <property name="referredTo" type="string">
+            <column name="Referred_to" length="225" not-null="true" />
+        </property>
+        <property name="referredToDate" type="timestamp">
+            <column name="Referred_to_date" length="19" not-null="true" />
+        </property>
+        <property name="referredFrom" type="string">
+            <column name="Referred_From" length="225" not-null="true" />
+        </property>
+        <property name="referredFromDate" type="timestamp">
+            <column name="Referred_from_Date" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

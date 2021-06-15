@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetuparvfixeddosecombinations" table="tblsetuparvfixeddosecombinations" catalog="zimepms" optimistic-lock="version">
+        <id name="arvcode" type="int">
+            <column name="ARVcode" />
+            <generator class="assigned" />
+        </id>
+        <property name="arvname" type="string">
+            <column name="ARVName" length="50" />
+        </property>
+        <property name="arvdescription" type="string">
+            <column name="ARVDescription" length="100" />
+        </property>
+        <property name="v2code" type="string">
+            <column name="V2Code" length="50" />
+        </property>
+        <property name="regimenType" type="string">
+            <column name="RegimenType" length="50" />
+        </property>
+        <property name="adults" type="java.lang.Integer">
+            <column name="Adults" />
+        </property>
+        <property name="peds" type="java.lang.Integer">
+            <column name="Peds" />
+        </property>
+        <property name="pharmCode" type="string">
+            <column name="PharmCode" length="14" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblbatches" table="tblbatches" catalog="zimepms" optimistic-lock="version">
+        <id name="batchNumber" type="string">
+            <column name="BatchNumber" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="msdcode" type="string">
+            <column name="MSDcode" length="8" />
+        </property>
+        <property name="dateReceived" type="timestamp">
+            <column name="DateReceived" length="19" />
+        </property>
+        <property name="expiryDate" type="timestamp">
+            <column name="ExpiryDate" length="19" />
+        </property>
+        <property name="finished" type="java.lang.Byte">
+            <column name="Finished" />
+        </property>
+        <property name="notes" type="string">
+            <column name="Notes" length="50" />
+        </property>
+        <property name="invoiceNumber" type="string">
+            <column name="InvoiceNumber" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

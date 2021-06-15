@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Visitplans" table="visitplans" catalog="zimepms" optimistic-lock="version">
+        <id name="vpId" type="java.lang.Long">
+            <column name="vpId" />
+            <generator class="identity" />
+        </id>
+        <property name="visitPlanDate" type="timestamp">
+            <column name="visitPlanDate" length="19" />
+        </property>
+        <property name="authorisedBy" type="string">
+            <column name="authorisedBy" />
+        </property>
+        <property name="isDone" type="java.lang.Boolean">
+            <column name="isDone" />
+        </property>
+        <property name="visitPlanDateCreated" type="timestamp">
+            <column name="visitPlanDateCreated" length="19" />
+        </property>
+        <property name="visitPlanDescri" type="string">
+            <column name="visitPlanDescri" length="100" />
+        </property>
+        <property name="vmmcId" type="string">
+            <column name="vmmcId" not-null="true" />
+        </property>
+        <property name="opdNumber" type="string">
+            <column name="opdNumber" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetuparvreasoncodes" table="tblsetuparvreasoncodes" catalog="zimepms" optimistic-lock="version">
+        <id name="arvreasonCode" type="int">
+            <column name="ARVReasonCode" />
+            <generator class="assigned" />
+        </id>
+        <property name="arvreason" type="string">
+            <column name="ARVReason" length="100" />
+        </property>
+        <property name="reasonCategory" type="string">
+            <column name="ReasonCategory" length="50" />
+        </property>
+        <property name="medEligible" type="java.lang.Integer">
+            <column name="MedEligible" />
+        </property>
+        <property name="ready" type="java.lang.Integer">
+            <column name="Ready" />
+        </property>
+        <set name="tblsetuparvstatuscodeses" table="tblsetuparvstatusreasonmap" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ARVReasonCode" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.vmmc.entities.Tblsetuparvstatuscodes">
+                <column name="ARVStatusCode" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.StiCs" table="sti_cs" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stinumber" type="string">
+            <column name="STINumber" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="dateofReport" type="date">
+            <column name="DateofReport" length="10" />
+        </property>
+        <property name="reportingFacility" type="string">
+            <column name="ReportingFacility" />
+        </property>
+        <property name="motherId" type="string">
+            <column name="MotherId" length="45" />
+        </property>
+        <property name="mothersAddress" type="string">
+            <column name="MothersAddress" />
+        </property>
+        <property name="mothersObsHistoryGravida" type="string">
+            <column name="MothersObsHistoryGravida" length="3" />
+        </property>
+        <property name="mothersObsHistoryParity" type="string">
+            <column name="MothersObsHistoryParity" length="3" />
+        </property>
+        <property name="lmpbeforeDelivery" type="date">
+            <column name="LMPBeforeDelivery" length="10" />
+        </property>
+        <property name="mothersReligion" type="string">
+            <column name="MothersReligion" length="45" />
+        </property>
+        <property name="firstPrenatalVisit" type="date">
+            <column name="FirstPrenatalVisit" length="10" />
+        </property>
+        <property name="trimesterFirstPrenatalVisit" type="string">
+            <column name="TrimesterFirstPrenatalVisit" length="4" />
+        </property>
+        <property name="motherHivstatusDuriPreg" type="string">
+            <column name="MotherHIVStatusDuriPreg" length="15" />
+        </property>
+        <property name="mothersMaritalStatus" type="string">
+            <column name="MothersMaritalStatus" length="45" />
+        </property>
+        <property name="periodReceivingBenzathinePenicillin" type="string">
+            <column name="PeriodReceivingBenzathinePenicillin" length="45" />
+        </property>
+        <property name="dateReceivingBenzathinePenicillin" type="date">
+            <column name="DateReceivingBenzathinePenicillin" length="10" />
+        </property>
+        <property name="motherSyphilisTreatment" type="string">
+            <column name="MotherSyphilisTreatment" length="45" />
+        </property>
+        <property name="dateOfDelivery" type="date">
+            <column name="DateOfDelivery" length="10" />
+        </property>
+        <property name="vitalStatus" type="string">
+            <column name="VitalStatus" length="45" />
+        </property>
+        <property name="dateOfDeath" type="date">
+            <column name="DateOfDeath" length="10" />
+        </property>
+        <property name="birthWeight" type="string">
+            <column name="BirthWeight" length="3" />
+        </property>
+        <property name="gestationalAge" type="string">
+            <column name="GestationalAge" length="3" />
+        </property>
+        <property name="nonTreponemaltest" type="string">
+            <column name="NonTreponemaltest" length="45" />
+        </property>
+        <property name="titerOfNonTreponemalTest" type="string">
+            <column name="TiterOfNonTreponemalTest" length="20" />
+        </property>
+        <property name="treponemaltestDone" type="string">
+            <column name="TreponemaltestDone" length="20" />
+        </property>
+        <property name="treponemaltestDoneDate" type="date">
+            <column name="TreponemaltestDoneDate" length="10" />
+        </property>
+        <property name="dateOfNonTreponemalTest" type="date">
+            <column name="DateOfNonTreponemalTest" length="10" />
+        </property>
+        <property name="darkiedExam" type="string">
+            <column name="DarkiedExam" length="45" />
+        </property>
+        <property name="signsOfCongenitalSyphilis" type="string">
+            <column name="SignsOfCongenitalSyphilis" />
+        </property>
+        <property name="boneXray" type="string">
+            <column name="BoneXRay" length="45" />
+        </property>
+        <property name="csfvdrl" type="string">
+            <column name="CSFVDRL" length="45" />
+        </property>
+        <property name="csfproteinCsfwb" type="string">
+            <column name="CSFProteinCSFWB" length="45" />
+        </property>
+        <property name="infantCongenitalSyphilistreatment" type="string">
+            <column name="InfantCongenitalSyphilistreatment" />
+        </property>
+        <property name="csclassification" type="string">
+            <column name="CSClassification" length="45" />
+        </property>
+        <property name="isNonTreponemalTestFirstVisit" type="string">
+            <column name="isNonTreponemalTestFirstVisit" length="20" />
+        </property>
+        <property name="isNonTreponemalTestWeeksGest" type="string">
+            <column name="isNonTreponemalTestWeeksGest" length="20" />
+        </property>
+        <property name="isNonTreponemalTestDelivery" type="string">
+            <column name="isNonTreponemalTestDelivery" length="20" />
+        </property>
+        <property name="dateOfNonTreponemalTestMotherRecent" type="date">
+            <column name="DateOfNonTreponemalTestMotherRecent" length="10" />
+        </property>
+        <property name="resultOfNonTreponemalTestMotherRecent" type="string">
+            <column name="ResultOfNonTreponemalTestMotherRecent" length="45" />
+        </property>
+        <property name="titerOfNonTreponemalTestMotherRecent" type="string">
+            <column name="TiterOfNonTreponemalTestMotherRecent" length="45" />
+        </property>
+        <property name="dateOfNonTreponemalTestMotherRecenFirst" type="date">
+            <column name="DateOfNonTreponemalTestMotherRecenFirst" length="10" />
+        </property>
+        <property name="resultOfNonTreponemalTestMotherFirst" type="string">
+            <column name="ResultOfNonTreponemalTestMotherFirst" length="45" />
+        </property>
+        <property name="titerOfNonTreponemalTestMotherFirst" type="string">
+            <column name="TiterOfNonTreponemalTestMotherFirst" length="45" />
+        </property>
+        <property name="dateOfPositiveTreponemalTestRecent" type="date">
+            <column name="DateOfPositiveTreponemalTestRecent" length="10" />
+        </property>
+        <property name="dateOfPositiveTreponemalTestFirst" type="date">
+            <column name="DateOfPositiveTreponemalTestFirst" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

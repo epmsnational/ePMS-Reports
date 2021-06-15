@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 25, 2021 10:43:50 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tbltests" table="tbltests" catalog="zimepms" optimistic-lock="version">
+        <id name="theId" type="java.lang.Integer">
+            <column name="TheID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblpatients" class="com.vmmc.entities.Tblpatients" fetch="select">
+            <column name="PatientID" length="21" />
+        </many-to-one>
+        <property name="testTypeId" type="string">
+            <column name="TestTypeID" length="3" />
+        </property>
+        <property name="testDate" type="timestamp">
+            <column name="TestDate" length="19" />
+        </property>
+        <property name="resultDate" type="timestamp">
+            <column name="ResultDate" length="19" />
+        </property>
+        <property name="resultNumeric" type="java.lang.Float">
+            <column name="ResultNumeric" precision="12" scale="0" />
+        </property>
+        <property name="resultNotes" type="string">
+            <column name="ResultNotes" />
+        </property>
+        <property name="recievedDate" type="timestamp">
+            <column name="RecievedDate" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

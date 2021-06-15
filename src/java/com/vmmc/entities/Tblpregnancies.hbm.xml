@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblpregnancies" table="tblpregnancies" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblpregnanciesId">
+            <key-property name="patientId" type="string">
+                <column name="PatientID" length="21" />
+            </key-property>
+            <key-property name="dueDate" type="timestamp">
+                <column name="DueDate" length="19" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tblpatients" class="com.vmmc.entities.Tblpatients" update="false" insert="false" fetch="select">
+            <column name="PatientID" length="21" not-null="true" />
+        </many-to-one>
+        <property name="notes" type="string">
+            <column name="Notes" />
+        </property>
+        <property name="ancnumber" type="string">
+            <column name="ANCnumber" length="50" />
+        </property>
+        <property name="dateOfBirth" type="timestamp">
+            <column name="DateOfBirth" length="19" />
+        </property>
+        <property name="pregnancyOutcomeId" type="string">
+            <column name="PregnancyOutcomeID" length="1" />
+        </property>
+        <property name="numberLiveBorn" type="java.lang.Integer">
+            <column name="NumberLiveBorn" />
+        </property>
+        <property name="birthLocation" type="string">
+            <column name="BirthLocation" />
+        </property>
+        <property name="deliveryModeId" type="string">
+            <column name="DeliveryModeID" length="3" />
+        </property>
+        <property name="assistanceId" type="string">
+            <column name="AssistanceID" length="3" />
+        </property>
+        <property name="presentationId" type="string">
+            <column name="PresentationID" length="3" />
+        </property>
+        <property name="tearId" type="string">
+            <column name="TearID" length="3" />
+        </property>
+        <property name="ldprophylaxisArvcode" type="java.lang.Integer">
+            <column name="LDProphylaxisARVCode" />
+        </property>
+    </class>
+</hibernate-mapping>

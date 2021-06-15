@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcReferredfrom" table="vmmc_referredfrom" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="referredFromId" type="java.lang.Integer">
+            <column name="ReferredFrom_ID" />
+        </property>
+        <property name="specifyReferredFrom" type="string">
+            <column name="SpecifyReferredFrom" />
+        </property>
+        <property name="referredFromDescription" type="string">
+            <column name="ReferredFromDescription" />
+        </property>
+    </class>
+</hibernate-mapping>

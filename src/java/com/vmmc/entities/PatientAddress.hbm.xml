@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.PatientAddress" table="patient_address" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="patientId" type="java.lang.Integer">
+            <column name="PatientId" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="physicalAddress" type="string">
+            <column name="PhysicalAddress" />
+        </property>
+        <property name="chief" type="string">
+            <column name="Chief" />
+        </property>
+        <property name="kraal" type="string">
+            <column name="Kraal" />
+        </property>
+        <property name="school" type="string">
+            <column name="School" />
+        </property>
+        <property name="village" type="string">
+            <column name="Village" />
+        </property>
+        <property name="clinic" type="string">
+            <column name="Clinic" />
+        </property>
+        <property name="mobileNumber" type="string">
+            <column name="MobileNumber" />
+        </property>
+        <property name="telNumber" type="string">
+            <column name="TelNumber" />
+        </property>
+        <property name="workTelNumber" type="string">
+            <column name="WorkTelNumber" />
+        </property>
+        <property name="workAddress" type="string">
+            <column name="WorkAddress" />
+        </property>
+    </class>
+</hibernate-mapping>

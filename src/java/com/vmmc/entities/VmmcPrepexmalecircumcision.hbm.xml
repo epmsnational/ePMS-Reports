@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcPrepexmalecircumcision" table="vmmc_prepexmalecircumcision" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="circumcisionProcedureId" type="java.lang.Integer">
+            <column name="CircumcisionProcedureID" />
+        </property>
+        <property name="deviceSize" type="string">
+            <column name="DeviceSize" length="4" />
+        </property>
+        <property name="deviceBatchId" type="string">
+            <column name="DeviceBatchID" />
+        </property>
+        <property name="deviceExpiriyDate" type="date">
+            <column name="DeviceExpiriyDate" length="10" />
+        </property>
+        <property name="deviceExpiryTime" type="time">
+            <column name="DeviceExpiryTime" length="8" />
+        </property>
+        <property name="topicalAnaesthesia" type="string">
+            <column name="`Topical Anaesthesia`" />
+        </property>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="topicalAnaesthesiaType" type="string">
+            <column name="TopicalAnaesthesiaType" />
+        </property>
+    </class>
+</hibernate-mapping>

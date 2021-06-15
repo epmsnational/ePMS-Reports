@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcAdverseevents" table="vmmc_adverseevents" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="noAdverseEvents" type="string">
+            <column name="NoAdverseEvents" length="11" />
+        </property>
+        <property name="hadAdverseEvents" type="string">
+            <column name="HadAdverseEvents" length="11" />
+        </property>
+        <property name="aemanagment" type="string">
+            <column name="AEManagment" length="65535" />
+        </property>
+        <property name="vmmcnumber" type="string">
+            <column name="VMMCNumber" />
+        </property>
+    </class>
+</hibernate-mapping>

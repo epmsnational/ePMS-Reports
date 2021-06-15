@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Setupstaff" table="setupstaff" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="userName" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="firstName" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" />
+        </property>
+        <property name="userRole" type="string">
+            <column name="userRole" />
+        </property>
+    </class>
+</hibernate-mapping>

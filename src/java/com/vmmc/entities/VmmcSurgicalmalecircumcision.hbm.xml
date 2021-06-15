@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcSurgicalmalecircumcision" table="vmmc_surgicalmalecircumcision" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="circumcisionProcedureId" type="java.lang.Integer">
+            <column name="CircumcisionProcedureID" />
+        </property>
+        <property name="procedureTypeId" type="string">
+            <column name="ProcedureType_Id" />
+        </property>
+        <property name="lignocaineone" type="java.lang.Double">
+            <column name="lignocaineone" precision="22" scale="0" />
+        </property>
+        <property name="lignocainetwo" type="java.lang.Double">
+            <column name="lignocainetwo" precision="22" scale="0" />
+        </property>
+        <property name="bupivacaine" type="java.lang.Double">
+            <column name="Bupivacaine" precision="22" scale="0" />
+        </property>
+        <property name="diathermyUsed" type="string">
+            <column name="DiathermyUsed" length="11" />
+        </property>
+        <property name="diathermySetting" type="string">
+            <column name="DiathermySetting" />
+        </property>
+        <property name="procedureStartTime" type="time">
+            <column name="ProcedureStartTime" length="8" />
+        </property>
+        <property name="procedureEndtime" type="time">
+            <column name="ProcedureEndtime" length="8" />
+        </property>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+    </class>
+</hibernate-mapping>

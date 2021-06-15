@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.PatientMedicalInsurance" table="patient_medical_insurance" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="patientId" type="java.lang.Integer">
+            <column name="PatientID" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="medicalInsuranceName" type="string">
+            <column name="Medical_Insurance_Name" />
+        </property>
+        <property name="medicalInsuranceNumber" type="string">
+            <column name="Medical_Insurance_Number" />
+        </property>
+        <property name="medicalInsuranceScheme" type="string">
+            <column name="Medical_Insurance_Scheme" />
+        </property>
+        <property name="medicalInsuranceRelation" type="string">
+            <column name="Medical_Insurance_Relation" />
+        </property>
+    </class>
+</hibernate-mapping>

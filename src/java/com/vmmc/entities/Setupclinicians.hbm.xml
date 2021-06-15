@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Setupclinicians" table="setupclinicians" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="fistName" type="string">
+            <column name="FistName" />
+        </property>
+        <property name="surname" type="string">
+            <column name="Surname" />
+        </property>
+        <property name="idnumber" type="string">
+            <column name="IDNumber" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblrequests" table="tblrequests" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblrequestsId">
+            <key-property name="msdcode" type="string">
+                <column name="MSDCode" length="8" />
+            </key-property>
+            <key-property name="periodEndDate" type="timestamp">
+                <column name="PeriodEndDate" length="19" />
+            </key-property>
+        </composite-id>
+        <property name="quantityRequested" type="java.lang.Integer">
+            <column name="QuantityRequested" />
+        </property>
+        <property name="remarks" type="string">
+            <column name="Remarks" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

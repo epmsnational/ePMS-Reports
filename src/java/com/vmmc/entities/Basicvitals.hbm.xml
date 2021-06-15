@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Basicvitals" table="basicvitals" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="height" type="java.lang.Float">
+            <column name="Height" precision="12" scale="0" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="temperature" type="java.lang.Float">
+            <column name="temperature" precision="255" scale="0" />
+        </property>
+        <property name="bloodPressure" type="string">
+            <column name="BloodPressure" />
+        </property>
+        <property name="weight" type="java.lang.Float">
+            <column name="weight" precision="12" scale="0" />
+        </property>
+        <property name="functionalStatus" type="java.lang.Integer">
+            <column name="FunctionalStatus" />
+        </property>
+        <property name="visitDate" type="timestamp">
+            <column name="VisitDate" length="19" />
+        </property>
+        <property name="basicvitalscol" type="string">
+            <column name="basicvitalscol" length="45" />
+        </property>
+        <property name="test" type="java.lang.Byte">
+            <column name="test" />
+        </property>
+    </class>
+</hibernate-mapping>

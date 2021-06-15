@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupstatus" table="tblsetupstatus" catalog="zimepms" optimistic-lock="version">
+        <id name="status" type="string">
+            <column name="Status" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="statusType" type="string">
+            <column name="StatusType" length="7" />
+        </property>
+        <property name="statusCode" type="string">
+            <column name="StatusCode" length="6" />
+        </property>
+        <property name="forStandard" type="java.lang.Integer">
+            <column name="ForStandard" />
+        </property>
+        <property name="infantStatusCode" type="string">
+            <column name="InfantStatusCode" length="3" />
+        </property>
+        <property name="infantStatusDesc" type="string">
+            <column name="InfantStatusDesc" />
+        </property>
+    </class>
+</hibernate-mapping>

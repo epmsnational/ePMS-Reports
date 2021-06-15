@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 25, 2020 3:21:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Visit" table="visit" catalog="zimepms" optimistic-lock="version">
+        <id name="visitId" type="java.lang.Integer">
+            <column name="visitId" />
+            <generator class="identity" />
+        </id>
+        <property name="visitPlanId" type="java.lang.Long">
+            <column name="visitPlanId" />
+        </property>
+        <property name="visitDate" type="timestamp">
+            <column name="visitDate" length="19" />
+        </property>
+        <property name="visitInterval" type="string">
+            <column name="visitInterval" length="45" />
+        </property>
+        <property name="attendedBy" type="string">
+            <column name="attendedBy" />
+        </property>
+        <property name="visitAdverse" type="java.lang.Boolean">
+            <column name="visitAdverse" />
+        </property>
+        <property name="adverseCode" type="string">
+            <column name="adverseCode" length="45" />
+        </property>
+        <property name="adverseSeverity" type="string">
+            <column name="adverseSeverity" length="45" />
+        </property>
+        <property name="staffComent" type="string">
+            <column name="StaffComent" />
+        </property>
+        <property name="visitType" type="string">
+            <column name="visitType" length="45" />
+        </property>
+        <property name="visitName" type="string">
+            <column name="visitName" length="100" />
+        </property>
+        <property name="isWoundHealing" type="java.lang.Boolean">
+            <column name="IsWoundHealing" />
+        </property>
+        <property name="hasResumedSex" type="java.lang.Boolean">
+            <column name="hasResumedSex" />
+        </property>
+        <property name="riskReductionPlan" type="string">
+            <column name="riskReductionPlan" />
+        </property>
+        <property name="startDate" type="string">
+            <column name="startDate" length="45" />
+        </property>
+        <property name="endDate" type="string">
+            <column name="endDate" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

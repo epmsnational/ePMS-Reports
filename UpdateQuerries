@@ -1,0 +1,330 @@
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+SET SQL_SAFE_UPDATES = 0;
+
+INSERT INTO `zimepms`.`setupmedicalaidsocities` (`id`, `medical_aid_name`, `address`) VALUES ('5', 'Harare Municipality Medical Aid Society', 'TEST5');
+
+INSERT INTO `zimepms`.`setupmedicalaidsocities` (`id`, `medical_aid_name`, `address`) VALUES ('6', 'Corporate24 Medical Aid', 'TEST6');
+
+INSERT INTO `zimepms`.`setupmedicalaidsocities` (`id`, `medical_aid_name`, `address`) VALUES ('7', 'Municipality Of Bulawayo Medical Aid Society', 'TEST7');
+
+ALTER TABLE `zimepms`.`htc` 
+ADD COLUMN `DOB` DATE NULL DEFAULT NULL AFTER `notified`,
+ADD COLUMN `Sex` VARCHAR(45) NULL AFTER `DOB`;
+
+UPDATE htc 
+SET DOB = (
+  SELECT DOB
+  FROM patient
+  WHERE OPDNumber = htc.OPDNumber
+);
+
+UPDATE htc 
+SET Sex = (
+  SELECT Sex
+  FROM patient
+  WHERE OPDNumber = htc.OPDNumber
+);
+
+ALTER TABLE `zimepms`.`htc_hivresult` 
+ADD COLUMN `DOB` DATE NULL DEFAULT NULL AFTER `readingtime`,
+ADD COLUMN `Sex` VARCHAR(45) NULL DEFAULT NULL AFTER `DOB`;
+
+ALTER TABLE `zimepms`.`htc_hivresult` 
+ADD COLUMN `DateofRegistration` DATE NULL DEFAULT NULL AFTER `Sex`;
+ALTER TABLE `zimepms`.`visit` 
+ADD COLUMN `startDate` VARCHAR(45) NULL DEFAULT '2019-09-01' AFTER `riskReductionPlan`,
+ADD COLUMN `endDate` VARCHAR(45) NULL DEFAULT '2020-04-31' AFTER `startDate`;
+
+INSERT INTO `zimepms`.`visit` (`visitId`) VALUES ('1');
+
+UPDATE htc_hivresult
+SET DOB = (
+  SELECT DOB
+  FROM patient
+  WHERE OPDNumber = htc_hivresult.OPDNumber
+);
+
+UPDATE htc_hivresult
+ SET Sex = (
+  SELECT Sex
+  FROM patient
+  WHERE OPDNumber = htc_hivresult.OPDNumber
+);
+
+UPDATE htc_hivresult
+ SET DOB = (
+SELECT DOB FROM patient
+  WHERE OPDNumber = htc_hivresult.OPDNumber
+);
+
+UPDATE htc_hivresult 
+SET DateofRegistration = (
+  SELECT DateofRegistration
+  FROM htc
+  WHERE OPDNumber = htc_hivresult.OPDNumber LIMIT 1
+);
+
+ALTER TABLE `zimepms`.`tblvisits` ADD COLUMN `TypeOfTPT` VARCHAR(45) NULL DEFAULT NULL  AFTER `IPTReasonCode` , ADD COLUMN `DOB` DATE NULL DEFAULT NULL  AFTER `IPTStatusCode` , ADD COLUMN `Sex` VARCHAR(45) NULL DEFAULT NULL  AFTER `DOB` ;
+
+UPDATE tblvisits 
+SET DOB = (SELECT DOB
+  FROM patient
+  WHERE patientId = tblvisits.PatientID LIMIT 1
+);
+
+UPDATE tblvisits 
+SET Sex = (SELECT Sex
+  FROM patient
+  WHERE patientId = tblvisits.PatientID LIMIT 1
+);
+
+ALTER TABLE `zimepms`.`highviralload` 
+CHANGE COLUMN `Id` `Id` INT(11) NOT NULL AUTO_INCREMENT ,
+ADD PRIMARY KEY (`Id`);
+
+ALTER TABLE `zimepms`.`tblsetuptbinvestigationresults` 
+CHANGE COLUMN `TBInvestigationResultsDescription` `TBInvestigationResultsDescription` VARCHAR(90) NULL DEFAULT NULL ;
+
+INSERT INTO `zimepms`.`tblsetuptbinvestigationresults` (`TBInvestigationResults`, `TBInvestigationResultsDescription`) VALUES ('5', 'Investigated and has Active TB and started on TB Treatment');
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReason` = 'Severe Adverse Event' WHERE (`IPTReasonCode` = '9');
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReason` = 'Severe Averse Event Specify' WHERE (`IPTReasonCode` = '11');
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReason` = 'Completed TPT' WHERE (`IPTReasonCode` = '8');
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReason` = 'Patient completed TPT in the past 3 years' WHERE (`IPTReasonCode` = '3');
+
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('HPI', 'Rifapentine Initiated');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'TPT Completed' WHERE (`IPTStatusCode` = 'IC');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'TPT Initiated' WHERE (`IPTStatusCode` = 'II');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'TPT Not Initaited' WHERE (`IPTStatusCode` = 'INI');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'TPT Stopped' WHERE (`IPTStatusCode` = 'IS');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'Not Eligible for TPT' WHERE (`IPTStatusCode` = 'NE');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'Restart TPT' WHERE (`IPTStatusCode` = 'RI');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'Continue TPT' WHERE (`IPTStatusCode` = 'CI');
+
+ALTER TABLE `zimepms`.`tblvisits` 
+ADD COLUMN `Status` VARCHAR(90) NULL DEFAULT NULL AFTER `Sex`,
+ADD COLUMN `RegDate` DATE NULL DEFAULT NULL AFTER `Status`;
+
+UPDATE tblvisits 
+SET Status = (
+  SELECT Status
+  FROM tblstatus
+  WHERE PatientID = tblvisits.PatientID and StatusDate = tblvisits.VisitDate
+);
+
+UPDATE tblvisits 
+SET RegDate = (
+  SELECT RegistrationDate
+  FROM patient
+  WHERE patientId = tblvisits.PatientID LIMIT 1
+);
+
+ALTER TABLE `zimepms`.`tbltests` 
+CHANGE COLUMN `TheID` `TheID` INT(11) NOT NULL DEFAULT 0 ;
+
+Alter table tbltests Drop TheID;
+
+ALTER TABLE tbltests ADD TheID int(11) NOT NULL AUTO_INCREMENT primary key FIRST;
+
+ALTER TABLE `zimepms`.`tbltests` 
+ADD COLUMN `Status` VARCHAR(95) NULL DEFAULT NULL AFTER `VisitDate`,
+ADD COLUMN `DOB` DATE NULL DEFAULT NULL AFTER `Status`,
+ADD COLUMN `Sex` VARCHAR(45) NULL DEFAULT NULL AFTER `DOB`,
+ADD COLUMN `ARVStatusCode` INT NULL DEFAULT NULL AFTER `Sex`;
+
+Use zimepms;
+UPDATE tbltests
+SET VisitDate = (
+  SELECT VisitDate
+  FROM tblvisits
+  WHERE PatientID = tbltests.PatientID LIMIT 1
+);
+UPDATE tbltests 
+SET Status = (
+  SELECT Status
+  FROM tblstatus
+  WHERE PatientID = tbltests.PatientID LIMIT 1
+);
+
+UPDATE tbltests 
+SET DOB = (
+  SELECT DOB
+  FROM patient
+  WHERE patientId = tbltests.PatientID LIMIT 1
+);
+
+UPDATE tbltests 
+SET Sex = (
+  SELECT Sex
+  FROM patient
+  WHERE patientId = tbltests.PatientID LIMIT 1
+);
+
+UPDATE tbltests 
+SET ARVStatusCode = (
+  SELECT ARVStatusCode
+  FROM tblvisits
+  WHERE PatientID = tbltests.PatientID LIMIT 1
+);
+
+CREATE TABLE `zimepms`.`reportdates` (
+  `ID` INT NOT NULL DEFAULT 1,
+  `startDate` VARCHAR(45) NULL DEFAULT '0000-00-00',
+  `End` VARCHAR(45) NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`ID`));
+INSERT INTO `zimepms`.`reportdates` (`ID`, `startDate`, `End`) VALUES ('1', '0000-00-00', '0000-00-00');
+
+CREATE TABLE `zimepms`.`laboratory` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `PatientID` VARCHAR(45) NULL DEFAULT NULL,
+  `TestType` VARCHAR(45) NULL DEFAULT NULL,
+  `TestDate` DATE NULL DEFAULT NULL,
+  `ReceivedDate` DATE NULL DEFAULT NULL,
+  `PatientReceivedDate` DATE NULL DEFAULT NULL,
+  `Result` INT(11) NULL DEFAULT NULL,
+   PRIMARY KEY (`ID`));
+   
+   DROP TABLE IF EXISTS `tblsetuptpttype`;
+
+CREATE TABLE `tblsetuptpttype` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `typeoftpt` varchar(160) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+INSERT INTO `tblsetuptpttype` VALUES (1,'IPT'),(2,'3HP'),(3,'NE');
+
+ALTER TABLE `zimepms`.`patient` 
+ADD COLUMN `fileRef` VARCHAR(45) NULL AFTER `Religion`;
+
+UPDATE patient 
+SET fileRef = (
+  SELECT FileRef
+  FROM tblpatients
+  WHERE PatientID = patient.patientId
+);
+
+CREATE TABLE `zimepms`.`facilities` (
+  `ProvinceCode` INT(11) NOT NULL,
+  `DistrictCode` VARCHAR(45) NOT NULL,
+  `FacilityCode` VARCHAR(45) NOT NULL,
+  `FacilityName` VARCHAR(90) NOT NULL,
+  `FullFacilityCode` VARCHAR(45) NOT NULL,
+  `FullFacilityCodeDashes` VARCHAR(45) NOT NULL);
+
+ALTER TABLE `zimepms`.`facilities` 
+ADD COLUMN `FacilityID` INT NOT NULL AUTO_INCREMENT FIRST,
+ADD PRIMARY KEY (`FacilityID`);
+
+CREATE TABLE `zimepms`.`nationality` (
+  `nationality_id` INT(225) NOT NULL,
+  `name` VARCHAR(225) DEFAULT NULL,
+   PRIMARY KEY (`nationality_id`));
+   
+   ALTER TABLE `zimepms`.`cbs_tests` 
+ADD COLUMN `dateFormCompleted` DATE NULL DEFAULT NULL AFTER `MotherViralloadSecondTestDate`,
+ADD COLUMN `dateOfBirth` DATE NULL DEFAULT NULL AFTER `dateFormCompleted`,
+ADD COLUMN `sex` VARCHAR(45) NULL DEFAULT NULL AFTER `dateOfBirth`;
+
+ALTER TABLE `zimepms`.`cbs_tests` 
+CHANGE COLUMN `firstTestResult` `firstTestResult` VARCHAR(10) NULL DEFAULT NULL ,
+CHANGE COLUMN `SecondTestResult` `SecondTestResult` VARCHAR(10) NULL DEFAULT NULL ,
+CHANGE COLUMN `CdCountResult` `CdCountResult` INT(11) NULL DEFAULT NULL ,
+CHANGE COLUMN `CdCountPercentage` `CdCountPercentage` INT(11) NULL DEFAULT NULL ,
+CHANGE COLUMN `MotherViralloadFirstTestResult` `MotherViralloadFirstTestResult` INT(11) NULL DEFAULT NULL ,
+CHANGE COLUMN `MotherViralloadSecondTestResult` `MotherViralloadSecondTestResult` INT(11) NULL DEFAULT NULL ;
+
+ALTER TABLE `zimepms`.`patient` 
+ADD COLUMN `Nationality` VARCHAR(90) NULL DEFAULT NULL AFTER `LastName`,
+ADD COLUMN `Type` VARCHAR(90) NULL DEFAULT NULL AFTER `Nationality`;
+
+ALTER TABLE `zimepms`.`tblsetupiptreasoncodes` 
+CHANGE COLUMN `IPTReasonCode` `TptID` INT(11) NOT NULL ;
+
+ALTER TABLE `zimepms`.`tblsetupiptreasoncodes` 
+ADD COLUMN `IPTReasonCode` VARCHAR(45) NULL DEFAULT NULL AFTER `IPTReason`;
+
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='C' WHERE `TptID`='8';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AT' WHERE `TptID`='1';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AL' WHERE `TptID`='5';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='CPT' WHERE `TptID`='3';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SAE' WHERE `TptID`='9';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AA' WHERE `TptID`='6';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SA' WHERE `TptID`='4';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='ON' WHERE `TptID`='2';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='SR' WHERE `TptID`='10';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='AE' WHERE `TptID`='11';
+UPDATE `zimepms`.`tblsetupiptreasoncodes` SET `IPTReasonCode`='O' WHERE `TptID`='7';
+
+ALTER TABLE `zimepms`.`tblvisits` 
+ADD COLUMN `VisitStatusCode` VARCHAR(5) NULL DEFAULT NULL AFTER `VisitTypeCode`;
+
+UPDATE `zimepms`.`tblsetupvisitstatus` SET `visitstatusdescription`='Lost to Follow up greater or equal 90' WHERE `visitstatuscode`='LO';
+
+delete from zimepms.setupstaff;
+
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '11');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '12');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '13');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '14');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '15');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '16');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '17');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '1' WHERE (`ARVReasonCode` = '18');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '201');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '202');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '207');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '206');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '205');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '204');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '203');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '2' WHERE (`ARVReasonCode` = '208');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '401');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '402');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '403');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '404');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '405');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '406');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '407');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '408');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '409');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '410');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '411');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '413');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '412');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '414');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '415');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '423');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '422');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '421');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '420');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '419');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '418');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '417');
+UPDATE `zimepms`.`tblsetuparvreasoncodes` SET `MedEligible` = '4' WHERE (`ARVReasonCode` = '416');
+
+Use zimepms;
+DROP TABLE IF EXISTS `tblsetupvisittypes`;
+CREATE TABLE `tblsetupvisittypes` (
+  `VisitTypeCode` varchar(2) NOT NULL,
+  `VisitType` varchar(15) DEFAULT NULL,
+  `VisitTypeLong` varchar(100) DEFAULT NULL,
+  `TheOrder` int(11) DEFAULT NULL,
+  `ForStandard` int(11) DEFAULT NULL,
+  `ForInfants` int(11) DEFAULT NULL,
+  `DSDclinical` int(2) DEFAULT NULL,
+  `DSDRefil` int(2) DEFAULT NULL,
+  PRIMARY KEY (`VisitTypeCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `tblsetupvisittypes` VALUES ('B','Birth','At birth',4,0,-1,0,0),('CL','Clinical','Clinical Visit',0,0,0,2,0),('D','CARG','Community ART Refill Group',7,-1,-1,1,1),('E','Group FPU','Group Facility Pickup',8,-1,-1,1,1),('F','Ind PUP','Individual Pickup From Pharmacy',9,-1,-1,1,1),('G','Ind PUM','Individual Pickup Via Mobile ',10,-1,-1,1,1),('IC','Without mother','Infant visit without mother',6,0,-1,0,0),('IM','With mother','Infant visit with mother',5,0,-1,0,0),('O','Other clinic','Visit to other clinic reported to this clinic',3,-1,-1,1,1),('P','Self','Patient presents self for review',1,-1,0,1,0),('RF','Refill','ART Refill visit',0,0,0,2,0),('TS','Treatment supp','Treatment supporter on behalf of patient',2,-1,-1,0,1);

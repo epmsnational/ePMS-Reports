@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 25, 2021 10:55:32 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblvisits" table="tblvisits" catalog="zimepms" optimistic-lock="version">
+        <composite-id name="id" class="com.vmmc.entities.TblvisitsId">
+            <key-property name="visitDate" type="timestamp">
+                <column name="VisitDate" length="19" />
+            </key-property>
+            <key-property name="patientId" type="string">
+                <column name="PatientID" length="21" />
+            </key-property>
+        </composite-id>
+        <property name="visitType" type="string">
+            <column name="VisitType" length="4" />
+        </property>
+        <property name="visitTypeCode" type="string">
+            <column name="VisitTypeCode" length="2" />
+        </property>
+        <property name="visitStatusCode" type="string">
+            <column name="VisitStatusCode" length="5" />
+        </property>
+        <property name="nowPregnant" type="string">
+            <column name="NowPregnant" length="3" />
+        </property>
+        <property name="familyPlanningId" type="string">
+            <column name="FamilyPlanningID" length="1" />
+        </property>
+        <property name="functionalStatusCode" type="string">
+            <column name="FunctionalStatusCode" length="1" />
+        </property>
+        <property name="whostage" type="java.lang.Integer">
+            <column name="WHOStage" />
+        </property>
+        <property name="tbstatusCode" type="string">
+            <column name="TBStatusCode" length="2" />
+        </property>
+        <property name="iptreasonCode" type="string">
+            <column name="IPTReasonCode" length="6" />
+        </property>
+        <property name="typeOfTpt" type="string">
+            <column name="TypeOfTPT" length="45" />
+        </property>
+        <property name="arvstatusCode" type="java.lang.Integer">
+            <column name="ARVStatusCode" />
+        </property>
+        <property name="arvreasonCode" type="java.lang.Integer">
+            <column name="ARVReasonCode" />
+        </property>
+        <property name="arvcode" type="java.lang.Integer">
+            <column name="ARVCode" />
+        </property>
+        <property name="notes" type="string">
+            <column name="Notes" />
+        </property>
+        <property name="staffId" type="java.lang.Integer">
+            <column name="StaffID" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <property name="theTimeStamp" type="timestamp">
+            <column name="TheTimeStamp" length="19" />
+        </property>
+        <property name="adverseEventsStatusCode" type="string">
+            <column name="AdverseEventsStatusCode" length="50" />
+        </property>
+        <property name="dispenserId" type="java.lang.Integer">
+            <column name="DispenserID" />
+        </property>
+        <property name="dateOfFirstAnc" type="date">
+            <column name="DateOfFirstANC" length="10" />
+        </property>
+        <property name="lnmpdate" type="date">
+            <column name="LNMPDate" length="10" />
+        </property>
+        <property name="tbinvestigationResults" type="java.lang.Integer">
+            <column name="TBInvestigationResults" />
+        </property>
+        <property name="isIpteligibility" type="string">
+            <column name="IsIPTEligibility" length="4" />
+        </property>
+        <property name="iptstatusCode" type="string">
+            <column name="IPTStatusCode" length="4" />
+        </property>
+    </class>
+</hibernate-mapping>

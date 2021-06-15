@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.VmmcMedicalscreening" table="vmmc_medicalscreening" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="weight" type="java.lang.Double">
+            <column name="Weight" precision="22" scale="0" />
+        </property>
+        <property name="temperature" type="java.lang.Double">
+            <column name="Temperature" precision="22" scale="0" />
+        </property>
+        <property name="bloodPressure" type="string">
+            <column name="BloodPressure" />
+        </property>
+        <property name="pulse" type="java.lang.Double">
+            <column name="Pulse" precision="22" scale="0" />
+        </property>
+        <property name="areKnownAllergies" type="string">
+            <column name="AreKnownAllergies" length="11" />
+        </property>
+        <property name="allergies" type="string">
+            <column name="Allergies" length="65535" />
+        </property>
+        <property name="anyMedications" type="string">
+            <column name="AnyMedications" length="11" />
+        </property>
+        <property name="medications" type="string">
+            <column name="Medications" length="65535" />
+        </property>
+        <property name="anyOperations" type="string">
+            <column name="AnyOperations" length="11" />
+        </property>
+        <property name="operations" type="string">
+            <column name="Operations" length="65535" />
+        </property>
+        <property name="hasTestedHiv" type="string">
+            <column name="HasTestedHIV" length="11" />
+        </property>
+        <property name="ifTestedLessOneMonth" type="string">
+            <column name="IfTestedLessOneMonth" />
+        </property>
+        <property name="ifTestedResult" type="string">
+            <column name="IfTestedResult" length="11" />
+        </property>
+        <property name="proofTestProvided" type="string">
+            <column name="ProofTestProvided" length="11" />
+        </property>
+        <property name="isAbnormalBleeding" type="string">
+            <column name="IsAbnormalBleeding" length="11" />
+        </property>
+        <property name="familyHistoryabnormalbleeding" type="string">
+            <column name="FamilyHistoryabnormalbleeding" />
+        </property>
+        <property name="dateTaken" type="date">
+            <column name="DateTaken" length="10" />
+        </property>
+        <property name="hivtestResult" type="string">
+            <column name="HIVTestResult" length="11" />
+        </property>
+        <property name="cd4cellCount" type="java.lang.Integer">
+            <column name="CD4cellCount" />
+        </property>
+        <property name="whoclinicalStage" type="java.lang.Integer">
+            <column name="WHOClinicalStage" />
+        </property>
+        <property name="hivtestDone" type="string">
+            <column name="HIVTestDone" length="11" />
+        </property>
+        <property name="vmmcid" type="string">
+            <column name="VMMCID" />
+        </property>
+        <property name="ifTestedOneThreeMonths" type="string">
+            <column name="IfTestedOneThreeMonths" />
+        </property>
+        <property name="ifTestedMoreThreeMonths" type="string">
+            <column name="IfTestedMoreThreeMonths" />
+        </property>
+        <property name="ifTestedSpecify" type="string">
+            <column name="IfTestedSpecify" />
+        </property>
+    </class>
+</hibernate-mapping>

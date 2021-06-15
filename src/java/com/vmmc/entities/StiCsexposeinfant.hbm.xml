@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.StiCsexposeinfant" table="sti_csexposeinfant" catalog="zimepms" optimistic-lock="version">
+        <id name="infantId" type="string">
+            <column name="InfantId" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="infantOpdnumber" type="string">
+            <column name="InfantOPDNumber" length="45" />
+        </property>
+        <property name="motherOpdnumber" type="string">
+            <column name="MotherOPDNumber" length="45" />
+        </property>
+        <property name="examination" type="string">
+            <column name="Examination" />
+        </property>
+        <property name="examinationType" type="string">
+            <column name="ExaminationType" length="45" />
+        </property>
+        <property name="umblicalOrPlacentaStatus" type="string">
+            <column name="UmblicalOrPlacentaStatus" length="45" />
+        </property>
+        <property name="nonTreponemalTestResult" type="string">
+            <column name="NonTreponemalTestResult" length="45" />
+        </property>
+        <property name="signs" type="string">
+            <column name="Signs" />
+        </property>
+        <property name="caseDefination" type="string">
+            <column name="CaseDefination" length="45" />
+        </property>
+        <property name="notified" type="string">
+            <column name="Notified" length="4" />
+        </property>
+        <property name="caseCriteria" type="string">
+            <column name="CaseCriteria" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

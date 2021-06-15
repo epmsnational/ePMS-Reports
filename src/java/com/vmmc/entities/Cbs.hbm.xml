@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 12, 2020 6:08:45 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Cbs" table="cbs" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="htcnumber" type="string">
+            <column name="HTCNumber" unique="true" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="nationalId" type="string">
+            <column name="NationalID" />
+        </property>
+        <property name="artNumber" type="string">
+            <column name="ArtNumber" length="45" />
+        </property>
+        <property name="artRegimen" type="string">
+            <column name="artRegimen" length="45" />
+        </property>
+        <property name="dateFormCompleted" type="date">
+            <column name="DateFormCompleted" length="10" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="firstname" length="45" />
+        </property>
+        <property name="surname" type="string">
+            <column name="surname" length="45" />
+        </property>
+        <property name="dateOfBirth" type="date">
+            <column name="dateOfBirth" length="10" />
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="45" />
+        </property>
+        <property name="religion" type="string">
+            <column name="religion" length="45" />
+        </property>
+        <property name="highestEducationalLevel" type="string">
+            <column name="`highest EducationalLevel`" length="45" />
+        </property>
+        <property name="pseudoId" type="string">
+            <column name="pseudoID" length="45" />
+        </property>
+        <property name="selfIdGeder" type="string">
+            <column name="selfIdGeder" length="45" />
+        </property>
+        <property name="distOfBirth" type="string">
+            <column name="distOfBirth" length="45" />
+        </property>
+        <property name="momName" type="string">
+            <column name="momName" length="45" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="maritalStatus" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" />
+        </property>
+        <property name="districtOfResidence" type="string">
+            <column name="districtOfResidence" length="45" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="nationality" length="45" />
+        </property>
+        <property name="recentPositive" type="date">
+            <column name="RecentPositive" length="10" />
+        </property>
+        <property name="isPregnant" type="string">
+            <column name="isPregnant" length="45" />
+        </property>
+        <property name="isBreadfeeding" type="string">
+            <column name="isBreadfeeding" length="45" />
+        </property>
+        <property name="infantFeedingMode" type="string">
+            <column name="infantFeedingMode" length="45" />
+        </property>
+        <property name="siteOfDelivery" type="string">
+            <column name="siteOfDelivery" length="45" />
+        </property>
+        <property name="gavidityOfMother" type="string">
+            <column name="GavidityOfMother" length="45" />
+        </property>
+        <property name="suspVictSexualAbuse" type="string">
+            <column name="SuspVictSexualAbuse" length="45" />
+        </property>
+        <property name="earlySexDebutMale" type="string">
+            <column name="EarlySexDebutMale" length="45" />
+        </property>
+        <property name="earlySexDebutFemale" type="string">
+            <column name="EarlySexDebutFemale" length="45" />
+        </property>
+        <property name="unProtectedSexWithMale" type="string">
+            <column name="unProtectedSexWithMale" length="45" />
+        </property>
+        <property name="unProtectedSexWithFemale" type="string">
+            <column name="unProtectedSexWithFemale" length="45" />
+        </property>
+        <property name="sexWithSexWorker" type="string">
+            <column name="sexWithSexWorker" length="45" />
+        </property>
+        <property name="exchangedSexMoney" type="string">
+            <column name="ExchangedSexMoney" length="45" />
+        </property>
+        <property name="beenPrison" type="string">
+            <column name="BeenPrison" length="45" />
+        </property>
+        <property name="recMedicalInjection" type="string">
+            <column name="RecMedicalInjection" length="45" />
+        </property>
+        <property name="injectables" type="string">
+            <column name="Injectables" length="45" />
+        </property>
+        <property name="recBloodTranfusion" type="string">
+            <column name="RecBloodTranfusion" length="45" />
+        </property>
+        <property name="stihistory" type="string">
+            <column name="STIHistory" length="45" />
+        </property>
+        <property name="isMotherAlive" type="string">
+            <column name="isMotherAlive" length="45" />
+        </property>
+        <property name="motherMartalStatus" type="string">
+            <column name="motherMartalStatus" length="45" />
+        </property>
+        <property name="momOartnumber" type="string">
+            <column name="momOARTnumber" length="45" />
+        </property>
+        <property name="momArtstatus" type="string">
+            <column name="MomArtstatus" length="45" />
+        </property>
+        <property name="momHivTesting" type="string">
+            <column name="MomHivTesting" length="45" />
+        </property>
+        <property name="momOtherRegimen" type="string">
+            <column name="MomOtherRegimen" length="45" />
+        </property>
+        <property name="surrogateMother" type="string">
+            <column name="surrogateMother" length="45" />
+        </property>
+        <property name="ancbooking" type="string">
+            <column name="ancbooking" length="45" />
+        </property>
+        <property name="gaatbooking" type="string">
+            <column name="gaatbooking" length="45" />
+        </property>
+        <property name="parityatbooking" type="string">
+            <column name="parityatbooking" length="45" />
+        </property>
+        <property name="numberofancvisits" type="string">
+            <column name="numberofancvisits" length="45" />
+        </property>
+        <property name="sexmaleagedebut" type="string">
+            <column name="sexmaleagedebut" length="45" />
+        </property>
+        <property name="sexfemaleagedebut" type="string">
+            <column name="sexfemaleagedebut" length="45" />
+        </property>
+        <property name="everBeenOnPrep" type="string">
+            <column name="everBeenOnPrep" length="45" />
+        </property>
+        <property name="everBeenOnAnyArtNotPrep" type="string">
+            <column name="everBeenOnAnyArtNotPrep" length="45" />
+        </property>
+        <property name="currentlyOnArt" type="string">
+            <column name="currentlyOnART" length="45" />
+        </property>
+        <property name="monthsRecentPositive" type="string">
+            <column name="monthsRecentPositive" length="45" />
+        </property>
+        <property name="datestoppedart" type="string">
+            <column name="datestoppedart" length="45" />
+        </property>
+        <property name="poorbreastfeed" type="string">
+            <column name="poorbreastfeed" length="45" />
+        </property>
+        <property name="otherriskfactors" type="string">
+            <column name="otherriskfactors" length="345" />
+        </property>
+        <property name="probablerouteoftransmission" type="string">
+            <column name="probablerouteoftransmission" length="345" />
+        </property>
+        <property name="sexualabused" type="string">
+            <column name="sexualabused" length="45" />
+        </property>
+        <property name="unprotectedsexnocondom" type="string">
+            <column name="unprotectedsexnocondom" length="45" />
+        </property>
+        <property name="tatooedwithunsterilized" type="string">
+            <column name="tatooedwithunsterilized" length="45" />
+        </property>
+        <property name="otherrouteoftransmission" type="string">
+            <column name="otherrouteoftransmission" length="45" />
+        </property>
+        <property name="sexualactive" type="string">
+            <column name="sexualactive" length="45" />
+        </property>
+        <property name="contactOfIndexTest" type="string">
+            <column name="ContactOfIndexTest" length="45" />
+        </property>
+        <property name="contactofindexcaseHtsnumber" type="string">
+            <column name="contactofindexcaseHTSnumber" length="45" />
+        </property>
+        <property name="contactofindexcaseArtnumber" type="string">
+            <column name="contactofindexcaseARTnumber" length="45" />
+        </property>
+        <property name="contactofindexcaseUniqnumber" type="string">
+            <column name="contactofindexcaseUNIQnumber" length="45" />
+        </property>
+        <property name="initiatedonart" type="string">
+            <column name="initiatedonart" length="45" />
+        </property>
+        <property name="reasonNotInitiatedOnArt" type="string">
+            <column name="reasonNotInitiatedOnArt" length="45" />
+        </property>
+        <property name="typeOfDelivery" type="string">
+            <column name="typeOfDelivery" length="45" />
+        </property>
+        <property name="placeOfDelivery" type="string">
+            <column name="placeOfDelivery" length="45" />
+        </property>
+        <property name="deliveredBy" type="string">
+            <column name="deliveredBy" length="45" />
+        </property>
+        <property name="infantProphylaxisDuration" type="string">
+            <column name="InfantProphylaxisDuration" length="45" />
+        </property>
+        <property name="feedingMethod" type="string">
+            <column name="feedingMethod" length="45" />
+        </property>
+        <property name="currentlyBf" type="string">
+            <column name="currentlyBF" length="45" />
+        </property>
+        <property name="birthWeight" type="string">
+            <column name="birthWeight" length="45" />
+        </property>
+        <property name="gaAtDelivery" type="string">
+            <column name="gaAtDelivery" length="45" />
+        </property>
+        <property name="feedingAgeCeased" type="string">
+            <column name="feedingAgeCeased" length="45" />
+        </property>
+        <property name="feedingDuration" type="string">
+            <column name="feedingDuration" length="45" />
+        </property>
+        <property name="infantProphylaxis" type="string">
+            <column name="infantProphylaxis" length="45" />
+        </property>
+        <property name="staffMemberEntering" type="string">
+            <column name="StaffMemberEntering" length="45" />
+        </property>
+        <property name="staffMemberTelephone" type="string">
+            <column name="StaffMemberTelephone" length="45" />
+        </property>
+        <property name="staffMemberEmail" type="string">
+            <column name="StaffMemberEmail" length="45" />
+        </property>
+        <property name="dateEnteredEpms" type="date">
+            <column name="dateEnteredEpms" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

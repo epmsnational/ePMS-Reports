@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupdrugtypes" table="tblsetupdrugtypes" catalog="zimepms" optimistic-lock="version">
+        <id name="drugTypeId" type="string">
+            <column name="DrugTypeID" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="drugType" type="string">
+            <column name="DrugType" />
+        </property>
+        <property name="initialVisitPriorExposure" type="java.lang.Integer">
+            <column name="InitialVisitPriorExposure" />
+        </property>
+        <property name="everyVisit" type="java.lang.Integer">
+            <column name="EveryVisit" />
+        </property>
+        <property name="forInfants" type="java.lang.Integer">
+            <column name="ForInfants" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+{
+    "versionLabel": "1.0",
+    "name": "Pebble Template",
+    "author": "Brian Douglass",
+    "uuid": "f5d06cdb-9831-4ce8-9efd-b7607d94de38",
+    "sdkVersion": "3",
+    "targetPlatforms": ["aplite", "basalt", "chalk"],
+    "enableMultiJS": true,
+    "watchface": true,
+    "health": false,
+    "resources": {
+        "media": [
+            {
+                "name": "DROIDSANS_BOLD_50",
+                "file": "fonts/DroidSans-Bold.ttf",
+                "characterRegex": "[0-9:]",
+                "type": "font"
+            }
+        ]
+    },
+    "enums": {
+        "temperature_units": {
+            "Fahrenheit": 0,
+            "Celsius": 1,
+            "Kelvin": 2
+        }
+    },
+    "config": [
+        {
+            "name": "temperature_units",
+            "type": "enum",
+            "enum": "temperature_units",
+            "only": "js",
+            "default": "Fahrenheit"
+        }, {
+            "name": "text_color",
+            "type": "int",
+            "default": 0,
+            "app_key": 0
+        }, {
+            "name": "show_bluetooth",
+            "type": "bool",
+            "default": true,
+            "app_key": 1
+        }, {
+            "name": "message",
+            "type": "string",
+            "default": "Hello World",
+            "length": 20,
+            "app_key": 2
+        }, {
+            "name": "background_color",
+            "type": "int",
+            "default": {
+                "aplite": 1,
+                "basalt": 65535,
+                "chalk": 65535
+            },
+            "app_key": 3
+        }, {
+            "name": "fetch",
+            "only": "app_key",
+            "app_key": 4
+        }
+    ]
+}

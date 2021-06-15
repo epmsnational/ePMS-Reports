@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 11, 2019 2:30:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.User" table="user" catalog="zimepms" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="FirstName" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="MiddleName" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LastName" />
+        </property>
+        <property name="userName" type="string">
+            <column name="UserName" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="605" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" />
+        </property>
+        <property name="position" type="string">
+            <column name="Position" />
+        </property>
+        <property name="isActive" type="java.lang.Boolean">
+            <column name="IsActive" />
+        </property>
+        <property name="lastLogIn" type="date">
+            <column name="LastLogIn" length="10" />
+        </property>
+        <property name="dateCreated" type="date">
+            <column name="DateCreated" length="10" />
+        </property>
+        <property name="dateModified" type="date">
+            <column name="DateModified" length="10" />
+        </property>
+        <property name="provinceId" type="java.lang.Integer">
+            <column name="ProvinceID" />
+        </property>
+        <property name="districtId" type="java.lang.Integer">
+            <column name="DistrictID" />
+        </property>
+        <property name="facilityId" type="java.lang.Integer">
+            <column name="FacilityID" />
+        </property>
+    </class>
+</hibernate-mapping>

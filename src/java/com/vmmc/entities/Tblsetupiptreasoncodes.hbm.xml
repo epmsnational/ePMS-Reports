@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 15, 2020 9:37:51 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetupiptreasoncodes" table="tblsetupiptreasoncodes" catalog="zimepms" optimistic-lock="version">
+        <id name="tptId" type="int">
+            <column name="TptID" />
+            <generator class="assigned" />
+        </id>
+        <property name="iptreason" type="string">
+            <column name="IPTReason" length="100" />
+        </property>
+        <property name="iptreasonCode" type="string">
+            <column name="IPTReasonCode" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,8 @@
+
+<adx xmlns="urn:ihe:qrph:adx:2015">
+    <group dataSet="ATB_005" period="2017-01-01/P1M" orgUnit="{{ orgunit }}">
+        {% for data in ds %}        
+        <dataValue dataElement="{{ data.state }}" ATB_SUMMARY_AGEGRP="{{ data.age }}" SEX="{{ data.male }}" couple="{{ data.couple }}" value="78"/>
+        {% endfor %}
+    </group>
+</adx>

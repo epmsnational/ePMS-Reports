@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 15, 2020 10:19:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblpatients" table="tblpatients" catalog="zimepms" optimistic-lock="version">
+        <id name="patientId" type="string">
+            <column name="PatientID" length="21" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="FirstName" length="50" />
+        </property>
+        <property name="surName" type="string">
+            <column name="SurName" length="50" />
+        </property>
+        <property name="nationalId" type="string">
+            <column name="NationalID" length="17" />
+        </property>
+        <property name="dateOfBirth" type="timestamp">
+            <column name="DateOfBirth" length="19" />
+        </property>
+        <property name="sex" type="string">
+            <column name="Sex" length="6" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="MaritalStatus" length="3" />
+        </property>
+        <property name="medInsSchemeName" type="string">
+            <column name="MedInsSchemeName" />
+        </property>
+        <property name="medInsMemberName" type="string">
+            <column name="MedInsMemberName" />
+        </property>
+        <property name="medInsNumber" type="string">
+            <column name="MedInsNumber" length="30" />
+        </property>
+        <property name="medInsRelationshipToMember" type="string">
+            <column name="MedInsRelationshipToMember" length="62" />
+        </property>
+        <property name="physicalAddress" type="string">
+            <column name="PhysicalAddress" />
+        </property>
+        <property name="physicalAddressNextKin" type="string">
+            <column name="PhysicalAddressNextKin" />
+        </property>
+        <property name="nearestKraal" type="string">
+            <column name="NearestKraal" />
+        </property>
+        <property name="nearestKraalNextKin" type="string">
+            <column name="NearestKraalNextKin" />
+        </property>
+        <property name="nearestVillage" type="string">
+            <column name="NearestVillage" />
+        </property>
+        <property name="nearestVillageNextKin" type="string">
+            <column name="NearestVillageNextKin" />
+        </property>
+        <property name="nearestSchool" type="string">
+            <column name="NearestSchool" />
+        </property>
+        <property name="nearestSchoolNextKin" type="string">
+            <column name="NearestSchoolNextKin" />
+        </property>
+        <property name="nearestClinic" type="string">
+            <column name="NearestClinic" />
+        </property>
+        <property name="nearestClinicNextKin" type="string">
+            <column name="NearestClinicNextKin" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="62" />
+        </property>
+        <property name="phoneNextKin" type="string">
+            <column name="PhoneNextKin" length="62" />
+        </property>
+        <property name="cellPhone" type="string">
+            <column name="CellPhone" length="62" />
+        </property>
+        <property name="cellPhoneNextKin" type="string">
+            <column name="CellPhoneNextKin" length="62" />
+        </property>
+        <property name="workAddress" type="string">
+            <column name="WorkAddress" />
+        </property>
+        <property name="workAddressNextKin" type="string">
+            <column name="WorkAddressNextKin" />
+        </property>
+        <property name="workTel" type="string">
+            <column name="WorkTel" length="62" />
+        </property>
+        <property name="workTelNextKin" type="string">
+            <column name="WorkTelNextKin" length="62" />
+        </property>
+        <property name="occupation" type="string">
+            <column name="Occupation" />
+        </property>
+        <property name="occupationNextKin" type="string">
+            <column name="OccupationNextKin" />
+        </property>
+        <property name="transferInId" type="string">
+            <column name="TransferInId" length="4" />
+        </property>
+        <property name="referredFromId" type="string">
+            <column name="ReferredFromID" length="21" />
+        </property>
+        <property name="referredFromNotes" type="string">
+            <column name="ReferredFromNotes" />
+        </property>
+        <property name="orphanStatusId" type="string">
+            <column name="OrphanStatusID" length="1" />
+        </property>
+        <property name="educationLevelId" type="string">
+            <column name="EducationLevelID" length="1" />
+        </property>
+        <property name="dateOfDeath" type="timestamp">
+            <column name="DateOfDeath" length="19" />
+        </property>
+        <property name="dateConfirmedHivpositive" type="timestamp">
+            <column name="DateConfirmedHIVPositive" length="19" />
+        </property>
+        <property name="locationHivtestCode" type="string">
+            <column name="LocationHIVTestCode" length="8" />
+        </property>
+        <property name="hivtestTypeId" type="string">
+            <column name="HIVTestTypeID" length="1" />
+        </property>
+        <property name="hivtestReasonId" type="string">
+            <column name="HIVTestReasonID" length="3" />
+        </property>
+        <property name="hivtestNotes" type="string">
+            <column name="HIVTestNotes" />
+        </property>
+        <property name="hivtestLocationCode" type="string">
+            <column name="HIVTestLocationCode" length="8" />
+        </property>
+        <property name="drugAllergies" type="string">
+            <column name="DrugAllergies" />
+        </property>
+        <property name="fileRef" type="string">
+            <column name="FileRef" length="50" />
+        </property>
+        <property name="notes" type="string">
+            <column name="Notes" />
+        </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="UserNumber" />
+        </property>
+        <property name="theTimeStamp" type="timestamp">
+            <column name="TheTimeStamp" length="19" />
+        </property>
+        <property name="opdnumber" type="string">
+            <column name="OPDNumber" />
+        </property>
+        <property name="dateOfEnrolment" type="date">
+            <column name="DateOfEnrolment" length="10" />
+        </property>
+        <property name="personalTracingName" type="string">
+            <column name="PersonalTracingName" length="100" />
+        </property>
+        <property name="personalTracingDate" type="date">
+            <column name="PersonalTracingDate" length="10" />
+        </property>
+        <property name="indexCaseName" type="string">
+            <column name="IndexCaseName" length="100" />
+        </property>
+        <property name="indexCaseDate" type="date">
+            <column name="IndexCaseDate" length="10" />
+        </property>
+        <property name="isDisclosureHiv" type="string">
+            <column name="IsDisclosureHIV" length="4" />
+        </property>
+        <property name="disclosureYesWhom" type="string">
+            <column name="DisclosureYesWhom" length="45" />
+        </property>
+        <property name="disclosureNoReason" type="string">
+            <column name="DisclosureNoReason" />
+        </property>
+        <property name="disclosureYesDate" type="date">
+            <column name="DisclosureYesDate" length="10" />
+        </property>
+        <property name="disclosureYesRelation" type="string">
+            <column name="DisclosureYesRelation" length="45" />
+        </property>
+        <property name="isRetestForHivinitiation" type="string">
+            <column name="IsRetestForHIVInitiation" length="4" />
+        </property>
+        <property name="isRetestForHivinitiationDate" type="date">
+            <column name="IsRetestForHIVInitiationDate" length="10" />
+        </property>
+        <property name="nameNextKin" type="string">
+            <column name="NameNextKin" />
+        </property>
+        <set name="tblvisitses" table="tblvisits" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PatientID" length="21" not-null="true" />
+            </key>
+            <one-to-many class="com.vmmc.entities.Tblvisits" />
+        </set>
+    </class>
+</hibernate-mapping>

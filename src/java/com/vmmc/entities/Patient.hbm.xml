@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 10, 2020 9:57:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Patient" table="patient" catalog="zimepms" optimistic-lock="version">
+        <id name="opdnumber" type="string">
+            <column name="OPDNumber" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="FirstName" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LastName" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="Nationality" length="90" />
+        </property>
+        <property name="type" type="string">
+            <column name="Type" length="90" />
+        </property>
+        <property name="nationalId" type="string">
+            <column name="NationalID" />
+        </property>
+        <property name="age" type="java.lang.Float">
+            <column name="Age" precision="12" scale="0" />
+        </property>
+        <property name="sex" type="string">
+            <column name="Sex" length="6" />
+        </property>
+        <property name="facilityCode" type="string">
+            <column name="FacilityCode" />
+        </property>
+        <property name="registrationDate" type="timestamp">
+            <column name="RegistrationDate" length="19" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="MaritalStatus" />
+        </property>
+        <property name="educationalLevel" type="string">
+            <column name="EducationalLevel" />
+        </property>
+        <property name="occupation" type="string">
+            <column name="Occupation" />
+        </property>
+        <property name="dob" type="date">
+            <column name="DOB" length="10" />
+        </property>
+        <property name="vmmcId" type="string">
+            <column name="vmmcId" />
+        </property>
+        <property name="htsId" type="string">
+            <column name="htsId" />
+        </property>
+        <property name="tbId" type="string">
+            <column name="tbId" />
+        </property>
+        <property name="patientId" type="string">
+            <column name="patientId" length="21" />
+        </property>
+        <property name="stiId" type="string">
+            <column name="stiId" length="45" />
+        </property>
+        <property name="ophanStatus" type="string">
+            <column name="OphanStatus" length="45" />
+        </property>
+        <property name="dateOfDeath" type="date">
+            <column name="DateOfDeath" length="10" />
+        </property>
+        <property name="religion" type="string">
+            <column name="Religion" length="45" />
+        </property>
+        <property name="fileRef" type="string">
+            <column name="fileRef" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
