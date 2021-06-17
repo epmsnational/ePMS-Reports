@@ -6,11 +6,13 @@
 package com.art.controllers;
 
 import com.reports.controllers.FileSave;
+import com.reports.services.HivTbCollaborationPopulate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,26 +44,19 @@ public class ArtReportGenerationC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FileSave save = new FileSave();
+        HivTbCollaborationPopulate dataList = new HivTbCollaborationPopulate();
         
-        String pdfFileName = save.getFilename();
-//        String contextPath = getServletContext().getRealPath(File.separator);
-//        File pdfFile = new File(contextPath + pdfFileName);
-        
-        String absoluteDiskPath = getServletContext().getRealPath(pdfFileName);
-        File pdfFile = new File(absoluteDiskPath);
+        String pdfFileName = dataList.getReportTitle();
+        String dir = System.getProperty("user.home") + "/Downloads/Documents";
+
+        String filex = dir + File.separatorChar + dataList.getReportTitle().replaceAll("/", "") + ".pdf";
+        File file = new File(filex);
 
         response.setContentType("application/pdf");
-        response.addHeader("Content-Disposition", "inline; filename=" + "zimepms.pdf");
-        response.setContentLength((int) pdfFile.length());
-
-        FileInputStream fileInputStream = new FileInputStream(pdfFile);
-        OutputStream responseOutputStream = response.getOutputStream();
-        int bytes;
-        while ((bytes = fileInputStream.read()) != -1) {
-            responseOutputStream.write(bytes);
-        }
-        request.getRequestDispatcher("reporsFilteringtJsps/reportViewerC.jsp").forward(request, response);
+        response.addHeader("Content-Type", getServletContext().getMimeType(file.getName()));
+        response.addHeader("Content-Length", String.valueOf(file.length()));
+        response.addHeader("Content-Disposition", "inline; filename=" + pdfFileName);
+        Files.copy(file.toPath(), response.getOutputStream());
     }
 
     @Override

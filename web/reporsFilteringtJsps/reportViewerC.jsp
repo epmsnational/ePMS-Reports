@@ -38,8 +38,8 @@
                         </header>
                         <div class="container">
                             
-                            <object data="${file}" type="application/pdf" width="1000px" height="1000px">
-                                <a href="${file}">Report.pdf</a>
+                            <object data="${pageContext.request.contextPath}" type="application/pdf" width="1000px" height="1000px">
+                                <a href="${pageContext.request.contextPath}">Report.pdf</a>
                             </object>
                         </div>
                     </section>

@@ -6,11 +6,13 @@
 package com.cbs.controllers;
 
 import com.reports.controllers.FileSave;
+import com.reports.services.CbsPopulate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +41,7 @@ public class CbsReportGeneration extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CbsReportGeneration</title>");            
+            out.println("<title>Servlet CbsReportGeneration</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CbsReportGeneration at " + request.getContextPath() + "</h1>");
@@ -60,38 +62,21 @@ public class CbsReportGeneration extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FileSave save = new FileSave();
-        
-//        String pdfFileName = save.getFilename();
-//        String contextPath = getServletContext().getRealPath(File.separator);
-//        File pdfFile = new File(contextPath + pdfFileName);
+        CbsPopulate dataList = new CbsPopulate();
+
+        String pdfFileName = dataList.getReportTitle();
+        String dir = System.getProperty("user.home") + "/Downloads/Documents";
+
+        String filex = dir + File.separatorChar + dataList.getReportTitle().replaceAll("/", "") + ".pdf";
+        File file = new File(filex);
 
         response.setContentType("application/pdf");
-        response.addHeader("Content-Disposition", "inline; filename=" + "zimepms.pdf");
-//        response.setContentLength((int) pdfFile.length());
-//
-//        FileInputStream fileInputStream = new FileInputStream(pdfFile);
-//        OutputStream responseOutputStream = response.getOutputStream();
-//        int bytes;
-//        while ((bytes = fileInputStream.read()) != -1) {
-//            responseOutputStream.write(bytes);
-        
-//        }
-        String relativeWebPath = "/home/ignatious/Downloads/Documents/zimepms.pdf";
-        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-        
-        request.setAttribute("file", relativeWebPath);
-        request.getRequestDispatcher("reporsFilteringtJsps/reportViewerC.jsp").forward(request, response);
+        response.addHeader("Content-Type", getServletContext().getMimeType(file.getName()));
+        response.addHeader("Content-Length", String.valueOf(file.length()));
+        response.addHeader("Content-Disposition", "inline; filename=" + pdfFileName);
+        Files.copy(file.toPath(), response.getOutputStream());
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

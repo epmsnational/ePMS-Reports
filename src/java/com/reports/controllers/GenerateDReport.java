@@ -64,9 +64,10 @@ public class GenerateDReport {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
 
-            String timeNow = new SimpleDateFormat("dd-MM-YYYY").format(Calendar.getInstance().getTime());
+//            String timeNow = new SimpleDateFormat("dd-MM-YYYY").format(Calendar.getInstance().getTime());
 
-            String file = dir + File.separatorChar + dataList.getReportTitle().replaceAll("/", "") + timeNow + ".pdf";
+//            String file = dir + File.separatorChar + dataList.getReportTitle().replaceAll("/", "") + timeNow + ".pdf";
+            String file = dir + File.separatorChar + dataList.getReportTitle().replaceAll("/", "") + ".pdf";
             
             FileOutputStream outputStream = new FileOutputStream(new File(file));
 
@@ -75,7 +76,6 @@ public class GenerateDReport {
             save.setFilename(file);
             save.setDate(Date);
              
-            //System.out.println("File Generated");
         } catch (JRException | FileNotFoundException ex) {
             ex.printStackTrace();
             return 0;
