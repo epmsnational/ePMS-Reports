@@ -45,7 +45,7 @@
                         <div class="container" style="margin-left: 15%">
                             <div class="row">
                                 <div class="col-xs-6" style="background-color: grey;width: 100%">
-                                    <form class="form-horizontal" name="txtDate" id="default" action="ArtSectionDReport"  method="POST">
+                                    <form class="form-horizontal" name="txtDate" id="default" action="CbsSectionReport"  method="POST">
 
                                         <legend> Choose The Desired Period</legend>
                                         <div class="form-group" style="color: blue;">

@@ -62,20 +62,25 @@ public class CbsReportGeneration extends HttpServlet {
             throws ServletException, IOException {
         FileSave save = new FileSave();
         
-        String pdfFileName = save.getFilename();
-        String contextPath = getServletContext().getRealPath(File.separator);
-        File pdfFile = new File(contextPath + pdfFileName);
+//        String pdfFileName = save.getFilename();
+//        String contextPath = getServletContext().getRealPath(File.separator);
+//        File pdfFile = new File(contextPath + pdfFileName);
 
         response.setContentType("application/pdf");
         response.addHeader("Content-Disposition", "inline; filename=" + "zimepms.pdf");
-        response.setContentLength((int) pdfFile.length());
-
-        FileInputStream fileInputStream = new FileInputStream(pdfFile);
-        OutputStream responseOutputStream = response.getOutputStream();
-        int bytes;
-        while ((bytes = fileInputStream.read()) != -1) {
-            responseOutputStream.write(bytes);
-        }
+//        response.setContentLength((int) pdfFile.length());
+//
+//        FileInputStream fileInputStream = new FileInputStream(pdfFile);
+//        OutputStream responseOutputStream = response.getOutputStream();
+//        int bytes;
+//        while ((bytes = fileInputStream.read()) != -1) {
+//            responseOutputStream.write(bytes);
+        
+//        }
+        String relativeWebPath = "/home/ignatious/Downloads/Documents/zimepms.pdf";
+        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+        
+        request.setAttribute("file", relativeWebPath);
         request.getRequestDispatcher("reporsFilteringtJsps/reportViewerC.jsp").forward(request, response);
     }
 

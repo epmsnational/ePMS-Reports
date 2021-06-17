@@ -37,7 +37,10 @@
 
                         </header>
                         <div class="container">
-                            <iframe src="/home/ignatious/Downloads/Documents/Epms Section C Report.pdf"></iframe>
+                            
+                            <object data="${file}" type="application/pdf" width="1000px" height="1000px">
+                                <a href="${file}">Report.pdf</a>
+                            </object>
                         </div>
                     </section>
                 </section>

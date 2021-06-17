@@ -107,7 +107,7 @@
                     <i class="fa fa-gear"></i> <span>MOHCC REPORTS </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sub">
-                    <li><a href="#"><i class="fa fa-circle-o"></i>CBS</a></li>
+                    <li><a href="CbsSectionReport"><i class="fa fa-circle-o"></i>CBS</a></li>
                     <li class="sub-menu">
                         <a href="#">
                             <i class="fa fa-gear"></i> <span>OI/ART </span> <i class="fa fa-angle-left pull-right"></i>
