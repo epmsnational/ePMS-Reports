@@ -43,23 +43,24 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.DateOfBirth, a.Sex, b.VisitDate, b.WHOStage,c.Status, d.DrugTypeID,e.ARVStatusDescription "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblstatus c ON b.PatientID = c.PatientID"
-                    + " JOIN tblmedication d ON c.PatientID = d.PatientID JOIN tblsetuparvstatuscodes e ON b.ARVStatusCode = e.ARVStatusCode "
-                    + "AND b.VisitDate = (Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            Map<String, Object> row = new HashMap<>();
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
-
-                String defaultValue = "0";
-                row = null_vals(rows, defaultValue);
+            String sql = "Select a.id.patientId, a.dateOfBirth, a.sex, b.id.visitDate, b.whostage,c.status, d.id.drugTypeId,e.arvstatusDescription"
+                    + " FROM Tblpatients a,Tblvisits b,Tblstatus c,Tblmedication d,Tblsetuparvstatuscodes e WHERE a.id.patientId = b.id.patientId "
+                    + "AND b.id.patientId = c.id.patientId AND c.id.patientId = d.id.patientId AND b.arvstatusCode = e.arvstatusCode group by a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("WHOStage", object[4]);
+                map.put("Status", object[5]);
+                map.put("DrugTypeID", object[6]);
+                map.put("ARVStatusDescription", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(row);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 OpportunityInfectionAndArtTherapy report = gson.fromJson(jsonElement, OpportunityInfectionAndArtTherapy.class);
 
                 reportData.add(report);
@@ -89,23 +90,25 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.DateOfBirth, a.Sex, b.VisitDate, b.WHOStage,c.Status, d.DrugTypeID,e.ARVStatusDescription "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblstatus c ON b.PatientID = c.PatientID"
-                    + " JOIN tblmedication d ON c.PatientID = d.PatientID JOIN tblsetuparvstatuscodes e ON b.ARVStatusCode = e.ARVStatusCode "
-                    + "AND b.VisitDate = (Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID Having count(*) = 1";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            Map<String, Object> row = new HashMap<>();
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
-
-                String defaultValue = "0";
-                row = null_vals(rows, defaultValue);
+            String sql = "Select a.id.patientId, a.dateOfBirth, a.sex, b.id.visitDate, b.whostage,c.status, d.id.drugTypeId,e.arvstatusDescription FROM Tblpatients a,"
+                    + "Tblvisits b,Tblstatus c,Tblmedication d,Tblsetuparvstatuscodes e WHERE e.arvstatusDescription = \'Start ARV\' AND a.id.patientId = b.id.patientId"
+                    + " AND b.id.patientId = c.id.patientId AND c.id.patientId = d.id.patientId AND b.arvstatusCode = e.arvstatusCode group by a.id.patientId";
+            
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("WHOStage", object[4]);
+                map.put("Status", object[5]);
+                map.put("DrugTypeID", object[6]);
+                map.put("ARVStatusDescription", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(row);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 OpportunityInfectionAndArtTherapy report = gson.fromJson(jsonElement, OpportunityInfectionAndArtTherapy.class);
 
                 reportData.add(report);
@@ -135,19 +138,24 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth, b.VisitDate, b.ProblemAcronym, c.DrugTypeID, d.AdverseEventsStatusCode, e.Status "
-                    + "FROM tblpatients a JOIN tblproblems b ON a.PatientID = b.PatientID JOIN tblmedication c ON a.PatientID = c.PatientID "
-                    + "JOIN tblvisits d ON a.PatientID = d.PatientID JOIN tblstatus e ON a.PatientID = e.PatientID AND b.VisitDate = "
-                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId,a.dateOfBirth, a.sex, b.id.visitDate, b.id.problemAcronym, c.id.drugTypeId, d.adverseEventsStatusCode,"
+                    + " e.status FROM Tblpatients a,Tblproblems b,Tblmedication c,Tblvisits d,Tblstatus e WHERE a.id.patientId = b.id.patientId AND"
+                    + " a.id.patientId = c.id.patientId AND a.id.patientId = d.id.patientId AND a.id.patientId = e.id.patientId group by a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("ProblemAcronym", object[4]);
+                map.put("DrugTypeID", object[5]);
+                map.put("AdverseEventsStatusCode", object[6]);
+                map.put("Status", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 OpportunityInfectionAndArtTherapyCryptoccocalStatus report = gson.fromJson(jsonElement, OpportunityInfectionAndArtTherapyCryptoccocalStatus.class);
 
                 reportData.add(report);
@@ -173,17 +181,23 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.TestTypeID,b.TestDate,b.ResultDate,b.ResultNumeric,b.RecievedDate "
-                    + "FROM tblpatients a JOIN tbltests b ON a.PatientID = b.PatientID where b.ResultNumeric is not null group by a.PatientID";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId,a.dateOfBirth,a.sex,b.testTypeId,b.testDate,b.resultDate,b.resultNumeric,b.recievedDate "
+                    + "FROM Tblpatients a,Tbltests b WHERE a.id.patientId = b.tblpatients.patientId AND b.resultNumeric is not null group by a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("TestTypeID", object[3]);
+                map.put("TestDate", object[4]);
+                map.put("ResultDate", object[5]);
+                map.put("ResultNumeric", object[6]);
+                map.put("ReceivedDate", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 LaboratoryServicesTests report = gson.fromJson(jsonElement, LaboratoryServicesTests.class);
 
                 reportData.add(report);
@@ -208,19 +222,23 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,c.RegimenType,d.Status FROM tblpatients a"
-                    + " JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
-                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE b.ARVStatusCode = 4 AND VisitDate = "
-                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID)";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId,a.dateOfBirth, a.sex,b.id.visitDate,b.arvstatusCode,c.regimenType,d.status FROM Tblpatients a, Tblvisits b, "
+                    + "Tblsetuparvfixeddosecombinations c, Tblstatus d WHERE a.id.patientId = b.id.patientId AND b.arvcode = c.arvcode AND a.id.patientId = d.id.patientId"
+                    + " AND b.arvstatusCode = 4 group by a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("ARVStatusCode", object[4]);
+                map.put("RegimenType", object[5]);
+                map.put("Status", object[6]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 LaboratoryServicesArvSwitch report = gson.fromJson(jsonElement, LaboratoryServicesArvSwitch.class);
 
                 reportData.add(report);
@@ -245,19 +263,27 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,c.RegimenType, d.Status, e.TestDate,e.ResultDate,e.RecievedDate,"
-                    + "e.ResultNumeric FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
-                    + "JOIN tblstatus d ON a.PatientID = d.PatientID JOIN tbltests e ON a.PatientID = e.PatientID WHERE e.ResultNumeric is not null AND b.ARVStatusCode = 2 "
-                    + "AND e.TestTypeID = \"CD4\" AND VisitDate = (Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID)";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId,a.dateOfBirth,a.sex,b.id.visitDate,c.regimenType,d.status, e.testDate,e.resultDate,e.resultNumeric,e.recievedDate FROM "
+                    + "Tblpatients a, Tblvisits b, Tblsetuparvfixeddosecombinations c, Tblstatus d, Tbltests e WHERE a.id.patientId = b.id.patientId AND b.arvcode = c.arvcode"
+                    + " AND a.id.patientId = d.id.patientId AND a.id.patientId = e.tblpatients.patientId AND e.resultNumeric is not null AND b.arvstatusCode = 2 AND e.testTypeId = \'CD4\' "
+                    + "group by a.id.patientId,b.id.visitDate";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("RegimenType", object[4]);
+                map.put("Status", object[5]);
+                map.put("Testdate", object[6]);
+                map.put("ResultDate", object[7]);
+                map.put("ResultNumeric", object[8]);
+                map.put("ReceivedDate", object[9]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 LaboratoryServicesCdFourCount report = gson.fromJson(jsonElement, LaboratoryServicesCdFourCount.class);
 
                 reportData.add(report);
@@ -283,19 +309,25 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,b.ARVReasonCode,c.RegimenType, d.Status "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
-                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE a.DateOfDeath is null AND VisitDate = "
-                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId, a.dateOfBirth, a.sex,b.id.visitDate,b.arvstatusCode,b.arvreasonCode,b.whostage,c.regimenType, d.status FROM Tblpatients a, "
+                    + "Tblvisits b, Tblsetuparvfixeddosecombinations c, Tblstatus d  WHERE a.id.patientId = b.id.patientId AND b.arvcode = c.arvcode AND "
+                    + "a.id.patientId = d.id.patientId AND a.dateOfDeath is null group by a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("ARVStatusCode", object[4]);
+                map.put("ARVReasonCode", object[5]);
+                map.put("WHOStage", object[6]);
+                map.put("RegimenType", object[7]);
+                map.put("Status", object[8]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 ArtSummary report = gson.fromJson(jsonElement, ArtSummary.class);
 
                 reportData.add(report);
@@ -357,19 +389,24 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.DateOfBirth, a.Sex, a.TransferInId, a.ReferredFromID, a.ReferredFromNotes, b.VisitDate, c.RegimenType "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVcode "
-                    + "WHERE a.TransferInId IN('AR','CR') AND VisitDate = (Select min(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) "
-                    + "GROUP BY a.PatientID";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId, a.dateOfBirth, a.sex, a.transferInId, a.referredFromId, a.referredFromNotes, b.id.visitDate, c.regimenType FROM Tblpatients a, "
+                    + "Tblvisits b, Tblsetuparvfixeddosecombinations c WHERE a.id.patientId = b.id.patientId AND b.arvcode = c.arvcode AND a.transferInId IN('AR','CR') "
+                    + "GROUP BY a.id.patientId";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("TransferInId", object[3]);
+                map.put("ReferredFromID", object[4]);
+                map.put("ReferredFromNotes", object[5]);
+                map.put("VisitDate", object[6]);
+                map.put("RegimenType", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 PatientsTransferInVisit report = gson.fromJson(jsonElement, PatientsTransferInVisit.class);
 
                 reportData.add(report);
@@ -395,10 +432,14 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,c.RegimenType,b.ARVReasonCode, d.Status "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
-                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE a.DateOfDeath is null AND VisitDate = "
-                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID Having Count(*) = 1";
+//            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,c.RegimenType,b.ARVReasonCode, d.Status "
+//                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
+//                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE a.DateOfDeath is null AND VisitDate = "
+//                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID) group by a.PatientID Having Count(*) = 1";
+            String sql ="Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,b.WHOStage,c.RegimenType,b.ARVReasonCode, d.Status,COUNT(*) "
+                    + "AS cnt FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
+                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE a.DateOfDeath is null GROUP BY a.PatientID  HAVING cnt = 1";
+            
             SQLQuery query = session.createSQLQuery(sql);
             query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
             List data = query.list();
@@ -433,19 +474,24 @@ public class EpmsReportsSectionD {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String sql = "Select a.PatientID, a.Sex, a.DateOfBirth,b.VisitDate,b.ARVStatusCode,b.AdverseEventsStatusCode,c.RegimenType, d.Status "
-                    + "FROM tblpatients a JOIN tblvisits b ON a.PatientID = b.PatientID JOIN tblsetuparvfixeddosecombinations c ON b.ARVCode = c.ARVCode "
-                    + "JOIN tblstatus d ON a.PatientID = d.PatientID WHERE a.DateOfDeath is null AND b.AdverseEventsStatusCode is not null AND VisitDate = "
-                    + "(Select max(VisitDate) FROM tblvisits WHERE a.PatientID = tblvisits.PatientID)";
-            SQLQuery query = session.createSQLQuery(sql);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List data = query.list();
-
-            for (Object object : data) {
-                Map<String, Object> rows = (Map<String, Object>) object;
+            String sql = "Select a.id.patientId,a.dateOfBirth, a.sex,b.id.visitDate,b.arvstatusCode,b.adverseEventsStatusCode,c.regimenType, d.status FROM Tblpatients a,"
+                    + "Tblvisits b, Tblsetuparvfixeddosecombinations c, Tblstatus d  WHERE a.id.patientId = b.id.patientId AND b.arvcode = c.arvcode AND a.id.patientId = d.id.patientId "
+                    + "AND a.dateOfDeath is null AND b.adverseEventsStatusCode is not null";
+            List<Object[]> data = session.createQuery(sql).list();
+            for (Object[] object : data) {
+                Map<String, Object> map = new HashMap<>();
+                
+                map.put("PatientID", object[0]);
+                map.put("DateOfBirth", object[1]);
+                map.put("Sex", object[2]);
+                map.put("VisitDate", object[3]);
+                map.put("ARVStatusCode", object[4]);
+                map.put("AdverseEventsStatusCode", object[5]);
+                map.put("RegimenType", object[6]);
+                map.put("Status", object[7]);
 
                 Gson gson = new Gson();
-                JsonElement jsonElement = gson.toJsonTree(rows);
+                JsonElement jsonElement = gson.toJsonTree(map);
                 ArtSummaryAdverseEvents report = gson.fromJson(jsonElement, ArtSummaryAdverseEvents.class);
 
                 reportData.add(report);

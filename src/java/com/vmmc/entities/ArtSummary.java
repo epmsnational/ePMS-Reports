@@ -21,11 +21,12 @@ public class ArtSummary {
     int ARVReasonCode;
     Date VisitDate;
     String RegimenType;
+    int WHOStage;
 
     public ArtSummary() {
     }
 
-    public ArtSummary(Date DateOfBirth, String Status, int ARVStatusCode, String PatientID, String Sex, int ARVReasonCode, Date VisitDate, String RegimenType) {
+    public ArtSummary(Date DateOfBirth, String Status, int ARVStatusCode, String PatientID, String Sex, int ARVReasonCode, Date VisitDate, String RegimenType, int WHOStage) {
         this.DateOfBirth = DateOfBirth;
         this.Status = Status;
         this.ARVStatusCode = ARVStatusCode;
@@ -34,6 +35,7 @@ public class ArtSummary {
         this.ARVReasonCode = ARVReasonCode;
         this.VisitDate = VisitDate;
         this.RegimenType = RegimenType;
+        this.WHOStage = WHOStage;
     }
 
     public String getStatus() {
@@ -99,5 +101,14 @@ public class ArtSummary {
     public void setRegimenType(String RegimenType) {
         this.RegimenType = RegimenType;
     }
+
+    public int getWHOStage() {
+        return WHOStage;
+    }
+
+    public void setWHOStage(int WHOStage) {
+        this.WHOStage = WHOStage;
+    }
+    
 
 }

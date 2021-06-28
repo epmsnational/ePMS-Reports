@@ -458,22 +458,17 @@ public class DataCleaner {
         List<ArtSummary> data = new ArrayList<>();
         list.stream()
                 .forEach(test -> {
-                    int arvStatus = test.getARVStatusCode();
-                    if (arvStatus == 1) {
-                        data.add(test);
-                    }
+                    data.add(test);
                 });
         return data;
     }
 
-    public List<OpportunityInfectionAndArtTherapy> getD2(List<OpportunityInfectionAndArtTherapy> list) {
-        List<OpportunityInfectionAndArtTherapy> data = new ArrayList<>();
+    public List<ArtSummary> getD2(List<ArtSummary> list) {
+        List<ArtSummary> data = new ArrayList<>();
         list.stream()
-                .filter(test -> test.getARVStatusDescription() != null)
                 .forEach(test -> {
                     int whoStage = test.getWHOStage();
-                    String arvStatus = test.getARVStatusDescription();
-                    if (arvStatus.equalsIgnoreCase("No ARV") & (whoStage == 1 || whoStage == 2)) {
+                    if (whoStage == 1 || whoStage == 2) {
                         data.add(test);
                     }
                 });
@@ -481,14 +476,12 @@ public class DataCleaner {
         return data;
     }
 
-    public List<OpportunityInfectionAndArtTherapy> getD3(List<OpportunityInfectionAndArtTherapy> list) {
-        List<OpportunityInfectionAndArtTherapy> data = new ArrayList<>();
+    public List<ArtSummary> getD3(List<ArtSummary> list) {
+        List<ArtSummary> data = new ArrayList<>();
         list.stream()
-                .filter(test -> test.getARVStatusDescription() != null)
                 .forEach(test -> {
                     int whoStage = test.getWHOStage();
-                    String arvStatus = test.getARVStatusDescription();
-                    if (arvStatus.equalsIgnoreCase("No ARV") & (whoStage == 3 || whoStage == 4)) {
+                    if (whoStage == 3 || whoStage == 4) {
                         data.add(test);
                     }
                 });

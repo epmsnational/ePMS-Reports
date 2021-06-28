@@ -48,40 +48,40 @@ public class OpportunisticInfectionsAndAntiretrovialTherapyPopulate {
                 + d1adults39[0] + d1adults39[1] + d1adults44[0] + d1adults44[1] + d1adults49[0] + d1adults49[1] + d1adults50[0] + d1adults50[1];
 
         //D2 Variables
-        int[] d2infant3 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 0, 3);
-        int[] d2infant12 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 4, 12);
-        int[] d2infant24 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 13, 24);
-        int[] d2infant59 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 25, 59);
-        int[] d2adults9 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 5, 9);
-        int[] d2adults14 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 10, 14);
-        int[] d2adults19 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 15, 19);
-        int[] d2adults24 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 20, 24);
-        int[] d2adults29 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 25, 29);
-        int[] d2adults34 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 30, 34);
-        int[] d2adults39 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 35, 39);
-        int[] d2adults44 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 40, 44);
-        int[] d2adults49 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 45, 49);
-        int[] d2adults50 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD2(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 50, 100);
+        int[] d2infant3 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 0, 3);
+        int[] d2infant12 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 4, 12);
+        int[] d2infant24 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 13, 24);
+        int[] d2infant59 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 25, 59);
+        int[] d2adults9 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 5, 9);
+        int[] d2adults14 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 10, 14);
+        int[] d2adults19 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 15, 19);
+        int[] d2adults24 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 20, 24);
+        int[] d2adults29 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 25, 29);
+        int[] d2adults34 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 30, 34);
+        int[] d2adults39 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 35, 39);
+        int[] d2adults44 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 40, 44);
+        int[] d2adults49 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 45, 49);
+        int[] d2adults50 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD2(epmsReports.getArtSummaryNewly()), ReportDate), 50, 100);
 
         int totald2 = d2infant3[0] + d2infant3[1] + d2infant12[0] + d2infant12[1] + d2infant24[0] + d2infant24[1] + d2infant59[0] + d2infant59[1] + d2adults9[0] + d2adults9[1]
                 + d2adults14[0] + d2adults14[1] + d2adults19[0] + d2adults19[1] + d2adults24[0] + d2adults24[1] + d2adults29[0] + d2adults29[1] + d2adults34[0] + d2adults34[1]
                 + d2adults39[0] + d2adults39[1] + d2adults44[0] + d2adults44[1] + d2adults49[0] + d2adults49[1] + d2adults50[0] + d2adults50[1];
 
         //D3 Variables
-        int[] d3infant3 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 0, 3);
-        int[] d3infant12 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 4, 12);
-        int[] d3infant24 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 13, 24);
-        int[] d3infant59 = infants.getTotalInfantsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 25, 59);
-        int[] d3adults9 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 5, 9);
-        int[] d3adults14 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 10, 14);
-        int[] d3adults19 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 15, 19);
-        int[] d3adults24 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 20, 24);
-        int[] d3adults29 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 25, 29);
-        int[] d3adults34 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 30, 34);
-        int[] d3adults39 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 35, 39);
-        int[] d3adults44 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 40, 44);
-        int[] d3adults49 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 45, 49);
-        int[] d3adults50 = adults.getTotalAdultsInOpportunityInfectionAndArtTherapy(cleanData.OpportunityInfectionAndArtTherapy(cleanData.getD3(epmsReports.getTreatmentAndProphylaxisNewly()), ReportDate), 50, 100);
+        int[] d3infant3 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 0, 3);
+        int[] d3infant12 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 4, 12);
+        int[] d3infant24 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 13, 24);
+        int[] d3infant59 = infants.getTotalInfantsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 25, 59);
+        int[] d3adults9 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 5, 9);
+        int[] d3adults14 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 10, 14);
+        int[] d3adults19 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 15, 19);
+        int[] d3adults24 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 20, 24);
+        int[] d3adults29 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 25, 29);
+        int[] d3adults34 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 30, 34);
+        int[] d3adults39 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 35, 39);
+        int[] d3adults44 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 40, 44);
+        int[] d3adults49 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 45, 49);
+        int[] d3adults50 = adults.getTotalAdultsInArtSummary(cleanData.ArtSummary(cleanData.getD3(epmsReports.getArtSummaryNewly()), ReportDate), 50, 100);
 
         int totald3 = d3infant3[0] + d3infant3[1] + d3infant12[0] + d3infant12[1] + d3infant24[0] + d3infant24[1] + d3infant59[0] + d3infant59[1] + d3adults9[0] + d3adults9[1]
                 + d3adults14[0] + d3adults14[1] + d3adults19[0] + d3adults19[1] + d3adults24[0] + d3adults24[1] + d3adults29[0] + d3adults29[1] + d3adults34[0] + d3adults34[1]
