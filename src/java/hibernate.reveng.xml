@@ -169,4 +169,12 @@
   <table-filter match-name="laboratory"/>
   <table-filter match-name="facilities"/>
   <table-filter match-name="nationality"/>
+  <table-filter match-name="tblsetupartinitiationcategory"/>
+  <table-filter match-name="tblsetuppatientprofile"/>
+  <table-filter match-name="tblsetupcryptococcaltreatment"/>
+  <table-filter match-name="tblsetupcryptococcalscreening"/>
+  <table-filter match-name="tblsetupcryptococcalinvestigation"/>
+  <table-filter match-name="tblsetupcervicalcancertreatment"/>
+  <table-filter match-name="tblsetuptbinvestigation"/>
+  <table-filter match-name="tblsetuptpteligibility"/>
 </hibernate-reverse-engineering>

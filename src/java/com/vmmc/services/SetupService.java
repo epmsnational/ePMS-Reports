@@ -81,8 +81,6 @@ public interface SetupService {
 
     List getOIIPTStatus();
 
-    List getOIIPTNoReasons();
-
     List getOIARVStatus();
 
     List getOIAdverseEventsStatus();

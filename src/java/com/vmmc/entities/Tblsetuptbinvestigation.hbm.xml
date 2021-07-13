@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 12, 2021 7:36:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.vmmc.entities.Tblsetuptbinvestigation" table="tblsetuptbinvestigation" catalog="zimepms" optimistic-lock="version">
+        <id name="tbInvestigationId" type="int">
+            <column name="TbInvestigationID" />
+            <generator class="assigned" />
+        </id>
+        <property name="tbInvestigation" type="string">
+            <column name="TbInvestigation" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

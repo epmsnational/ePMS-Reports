@@ -35,9 +35,14 @@ import com.vmmc.entities.StiSetupsyndrome;
 import com.vmmc.entities.StiSexualactivity;
 import com.vmmc.entities.StiSymptoms;
 import com.vmmc.entities.Tblsetupadverseeventsstatus;
+import com.vmmc.entities.Tblsetupartinitiationcategory;
 import com.vmmc.entities.Tblsetuparvfixeddosecombinations;
 import com.vmmc.entities.Tblsetuparvreasoncodes;
 import com.vmmc.entities.Tblsetuparvstatuscodes;
+import com.vmmc.entities.Tblsetupcervicalcancertreatment;
+import com.vmmc.entities.Tblsetupcryptococcalinvestigation;
+import com.vmmc.entities.Tblsetupcryptococcalscreening;
+import com.vmmc.entities.Tblsetupcryptococcaltreatment;
 import com.vmmc.entities.Tblsetupdispensers;
 import com.vmmc.entities.Tblsetupfamilyplanning;
 import com.vmmc.entities.Tblsetupfunctionalstatus;
@@ -49,8 +54,10 @@ import com.vmmc.entities.Tblsetupproblems;
 import com.vmmc.entities.Tblsetupreferralsto;
 import com.vmmc.entities.Tblsetupstaff;
 import com.vmmc.entities.Tblsetupstatus;
+import com.vmmc.entities.Tblsetuptbinvestigation;
 import com.vmmc.entities.Tblsetuptbinvestigationresults;
 import com.vmmc.entities.Tblsetuptbstatus;
+import com.vmmc.entities.Tblsetuptpteligibility;
 import com.vmmc.entities.Tblsetuptpttype;
 import com.vmmc.entities.Tblsetupvisitstatus;
 import com.vmmc.entities.Tblsetupvisittypes;
@@ -67,15 +74,86 @@ import org.hibernate.SessionFactory;
  * @author leon-mbano
  */
 public class SetupServiceImpl implements SetupService {
-
     
-    
-    public List<Facilities> getFacilityTypes() {
+    public List<Tblsetupcervicalcancertreatment> getCervicalCancerTreatment(){
         SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Facilities> pList = null;
+         List<Tblsetupcervicalcancertreatment> pList = null;
         try {
-            pList = session.createQuery("from Facilities").list();
+            pList = session.createQuery("from Tblsetupcervicalcancertreatment").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetupcryptococcaltreatment> getCryptococcalTreatment(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetupcryptococcaltreatment> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetupcryptococcaltreatment").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetupcryptococcalinvestigation> getCryptococcalInvestigation(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetupcryptococcalinvestigation> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetupcryptococcalinvestigation").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetupcryptococcalscreening> getCryptococcalScreening(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetupcryptococcalscreening> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetupcryptococcalscreening").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetuptpteligibility> getTptEligibility(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetuptpteligibility> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetuptpteligibility").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetuptbinvestigation> getTbInvestigation(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetuptbinvestigation> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetuptbinvestigation").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+        
+    }
+
+    public List<Tblsetupartinitiationcategory> getArtCategoryTypes() {
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Tblsetupartinitiationcategory> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetupartinitiationcategory").list();
             return pList;
         } finally {
             session.close();
@@ -83,12 +161,12 @@ public class SetupServiceImpl implements SetupService {
 
     }
     
-     public List<Tblsetuptpttype> getTptTypes() {
+    public List<Facilities> getFacilityTypes() {
         SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Tblsetuptpttype> pList = null;
+        List<Facilities> pList = null;
         try {
-            pList = session.createQuery("from Tblsetuptpttype").list();
+            pList = session.createQuery("from Facilities").list();
             return pList;
         } finally {
             session.close();
@@ -775,19 +853,6 @@ public class SetupServiceImpl implements SetupService {
         List<Tblsetupiptstatus> pList = null;
         try {
             pList = session.createQuery("from Tblsetupiptstatus ").list();
-            return pList;
-        } finally {
-            session.close();
-        }
-    }
-
-    @Override
-    public List getOIIPTNoReasons() {
-        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        List<Tblsetupiptreasoncodes> pList = null;
-        try {
-            pList = session.createQuery("from Tblsetupiptreasoncodes ").list();
             return pList;
         } finally {
             session.close();

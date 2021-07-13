@@ -186,5 +186,13 @@
         <mapping resource="com/vmmc/entities/Laboratory.hbm.xml"/>
         <mapping resource="com/vmmc/entities/Facilities.hbm.xml"/>
         <mapping resource="com/vmmc/entities/Nationality.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetupartinitiationcategory.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetuppatientprofile.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetupcryptococcaltreatment.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetupcryptococcalscreening.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetupcryptococcalinvestigation.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetupcervicalcancertreatment.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetuptbinvestigation.hbm.xml"/>
+        <mapping resource="com/vmmc/entities/Tblsetuptpteligibility.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -53,6 +53,9 @@
                                     <li id="default-title-3" class="">
                                         <div>Step 4</div>
                                     </li>
+                                    <li id="default-title-4" class="">
+                                        <div>Step 5</div>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -150,10 +153,10 @@
                                                     <select id="whostage"name ="slcOIWhoClinicalStage" class="form-control" placeholder="select WHO stage" >
 
                                                         <option> </option>   
-                                                        <option>1</option>  
-                                                        <option>2</option>  
-                                                        <option>3</option>  
-                                                        <option>4</option> 
+                                                        <option value="1">1</option>  
+                                                        <option value="2">2</option>  
+                                                        <option value="3">3</option>  
+                                                        <option value="4">4</option> 
                                                     </select>
                                                 </div>
                                             </div>
@@ -169,6 +172,16 @@
                                                 </div>
 
                                                 <div id="div1" style="display: none;">
+                                                    <div class="col-lg-2"><b> TB SCREENING INVESTIGATION:</b></div><div class="col-lg-4">
+                                                        <select name="slcOITBInvestigation" class="form-control">
+                                                            <option> </option>
+                                                            <c:forEach var="tbinvestigation" items="${tbinvestigation}">
+                                                                <option value="${tbinvestigation.tbInvestigation}">${tbinvestigation.tbInvestigation}</option>
+                                                            </c:forEach>
+
+                                                        </select>
+                                                    </div>
+
                                                     <div class="col-lg-2"><b> TB INVESTIGATION RESULT:</b></div><div class="col-lg-4">
                                                         <select name="slcOITBInvestigationResult" class="form-control">
                                                             <option> </option>
@@ -233,10 +246,10 @@
 
 
                                             <select name ="slcOIIPTEligibility" class="form-control" placeholder="select Eligibility" onchange="showDiv2(this)">
-
-                                                <option> </option>   
-                                                <option value="Yes">Yes </option>  
-                                                <option value="No"> No</option>  
+                                                <option> </option>
+                                                <c:forEach var="istpteligibility" items="${istpteligibility}">
+                                                    <option value="${istpteligibility.tptEligibilityCode}">${istpteligibility.tptEligibilityDescription}</option>
+                                                </c:forEach> 
                                             </select>
 
                                         </div>
@@ -245,17 +258,6 @@
                                     <div class="form-group" style="color: blue;">
 
                                         <div id="div2a" style="display: none;">
-                                            <div class="col-lg-2" style="color: blue;"><b>TYPE OF TPT:</b></div>
-                                            <div class="col-lg-4">
-                                                <select name="slcOIIPTStatus" class="form-control">
-                                                    <option> </option>
-                                                    <c:forEach var="tpttype" items="${tpttypelist}">
-                                                        <option value="${tpttype.id}">${tpttype.typeoftpt}</option>
-                                                    </c:forEach>
-
-                                                </select>
-
-                                            </div>
                                             <div class="col-lg-2" style="color: blue;"><b> TPT STATUS:</b></div>
                                             <div class="col-lg-4">
                                                 <select name="slcOIIPTStatus" class="form-control" onchange="showDivT(this)">
@@ -271,20 +273,6 @@
                                         </div>
                                     </div>
                                     <div id="div2b" style="display: none;">
-                                        <div id="divTpt" style="display: none;"> 
-                                            <div class="col-lg-2" style="color: blue;"><b>REASON FOR NOT STARTING OR STOPPING TPT:</b></div>
-                                            <div class="col-lg-4">
-                                                <div class="checkbox" class="form-control">                                                                                
-                                                    <label style="color: blue;">Tick all that apply</label>
-                                                    <c:forEach items="${iptreasoncodes}" var="iptreasoncode">
-                                                        <label>
-                                                            <input type="checkbox" id="ckReferredTo[]" name="slcOIReasonForNotIPT" value="${iptreasoncode.iptreasonCode}"> ${iptreasoncode.iptreason}
-                                                        </label>
-                                                    </c:forEach>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="form-group" style="color: blue;">
                                             <div class="col-lg-2" ><b> QUANTITY DISPENSED TABLETS/ml:</b></div><div class="col-lg-4">
                                                 <input style="color: blue;" type="number" class="form-control" placeholder="Tablets/ml" name="txtOIIPTQuantiyDispensed" >
@@ -295,19 +283,50 @@
                                             </div>
                                         </div>
                                     </div><hr>
-                                    <div >
+                                    <div class="col-lg-12" style="color: red;"><h3>CRYPTOCOCCAL STATUS :</h3></div>
+                                    <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL SCREENING:</b></div>
+                                    <div class="col-lg-4">
+                                        <select name ="cryptococcalscreening" class="form-control">
+                                            <option> </option>
+                                            <c:forEach var="cryptococcalscreening" items="${cryptococcalscreening}">
+                                                <option value="${cryptococcalscreening.cryptococcalScreeningCode}">${cryptococcalscreening.cryptococcalScreeningDescription}</option>
+                                            </c:forEach> 
+                                        </select>
 
-                                        <div class="col-lg-12" style="color: red;"><h3>FLUCONAZOLE :</h3></div>
-                                        <div class="form-group" style="color: blue;">
-                                            <div class="col-lg-2"><b> QUANTITY PRESCRIBED:</b></div><div class="col-lg-4">
-                                                <input  id="fluqp"type="number" class="form-control" placeholder="tablets/ml" name="txtOIFlzQuantiyPrescribed" >
-                                            </div>
-
-                                            <div class="col-lg-2"><b> QUANTITY DISPENSED:</b></div><div class="col-lg-4">
-                                                <input id="fluqd" type="number" class="form-control" placeholder="tablets/ml" name="txtOIFlzQuantiyDispensed" onchange="showValidateFluconazole(this)">
-                                            </div>
-                                        </div><hr>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL INVESTIGATION DONE:</b></div>
+                                        <div class="col-lg-4">
+                                            <select name ="cryptococcalinvestigation" class="form-control">
+                                                <option> </option>
+                                                <c:forEach var="cryptococcalinvestigation" items="${cryptococcalinvestigation}">
+                                                    <option value="${cryptococcalinvestigation.cryptococcalInvestigationCode}">${cryptococcalinvestigation.cryptococcalInvestigationDescription}</option>
+                                                </c:forEach> 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL INVESTIGATION RESULTS:</b></div>
+                                        <div class="col-lg-4">
+                                            <select name ="cryptococcalinvestigationresult" class="form-control">
+                                                <option> </option>
+                                                <option value="Positive">Positive</option>
+                                                <option value="Negative">Negative</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL TREATMENT DONE:</b></div>
+                                        <div class="col-lg-4">
+                                            <select name ="cryptococcaltreatment" class="form-control">
+                                                <option> </option>
+                                                <c:forEach var="cryptococcaltreatment" items="${cryptococcaltreatment}">
+                                                    <option value="${cryptococcaltreatment.cryptococcalTreatmentCode}">${cryptococcaltreatment.cryptococcalTreatmentDescription}</option>
+                                                </c:forEach> 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
 
                                     <div class="col-lg-12" style="color: red" align="left"  ><h3>ARV :</h3></div>
                                     <div class="form-group" style="color: blue;">
@@ -373,6 +392,18 @@
                                         </div>                                       
                                     </div>
                                     <div id="div3d" style="display: none;">
+                                        <div class="form-group" style="color: blue;">
+                                            <div class="col-lg-2">ART INITIATION CATEGORY:</div>
+                                            <div class="col-lg-4">
+                                                <select name="artinitiationcategory" class="form-control">
+                                                    <option> </option>
+                                                    <c:forEach var="artcategories" items="${artcategories}">
+                                                        <option value="${artcategories.artInitiationCategoryCode}">${artcategories.artInitiationCategoryCode} - ${artcategories.artInitiationCategoryDescription}</option>
+                                                    </c:forEach>
+
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group" style="color: blue;">
                                             <div class="col-lg-2">ARV COMBINATION REGIMEN:</div>
                                             <div class="col-lg-4">
@@ -619,7 +650,41 @@
                                         </div>
                                     </div>
                                 </fieldset>
+                                
                                 <fieldset title="Step 4" class="step" id="default-step-3" >
+                                    <legend> Cervical Cancer Screening:<p>HPV Test/VIAC</p></legend>
+                                    <div class="form-group" style="color: blue;">
+                                        <label class="col-lg-2 control-label" >HPV Test Result:</label>
+                                        <div class="col-lg-3">
+                                            <select name="txthpvresult" class="form-control">
+                                                <option> </option>
+                                                <option value="Positive">Positive</option>
+                                                <option value="Negative">Negative</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-lg-2 control-label" >VIAC Result:</label>
+                                        <div class="col-lg-3">
+                                            <select name="txtviacresult" class="form-control">
+                                                <option> </option>
+                                                <option value="Positive">Positive</option>
+                                                <option value="Negative">Negative</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="color: blue;">
+                                        <label class="col-lg-2 control-label" >Treatment:</label>
+                                        <div class="col-lg-3">
+                                            <select name="txttreatment" class="form-control">
+                                                <option> </option>
+                                                    <c:forEach var="cervicalcancertreatment" items="${cervicalcancertreatment}">
+                                                        <option value="${cervicalcancertreatment.cervicalCancerTreatmentCode}">${cervicalcancertreatment.cervicalCancerTreatmentDescription}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                
+                                <fieldset title="Step 5" class="step" id="default-step-4" >
                                     <legend> Followup & Outcome </legend>
                                     <div >
                                         <div class="form-group" style="color: blue;">
@@ -654,7 +719,7 @@
 
                                             </div>
                                             <br><br>
-                                            <label class="col-lg-2 control-label"><b>Follow up Status:</b></label>
+                                            <label class="col-lg-2 control-label"><b>Final Outcome:</b></label>
                                             <div class="col-lg-4">
                                                 <select name="slcFollowUpStatus" class="form-control" onchange="showDiv8(this)">
                                                     <option> </option>
@@ -887,15 +952,17 @@
 
 
         function showDiv2(elem) {
-        if (elem.value == 'Yes') {
+        if (elem.value == 'Y') {
         document.getElementById('div2a').style.display = "block";
                 document.getElementById('div2b').style.display = "block";
-        } else if (elem.value == 'No') {
+        }
+        if (elem.value == '') {
         document.getElementById('div2a').style.display = "none";
                 document.getElementById('div2b').style.display = "none";
-        } else {
-        document.getElementById('div2a').style.display = "none";
-                document.getElementById('div2b').style.display = "none";
+        }
+        else {
+        document.getElementById('div2a').style.display = "block";
+                document.getElementById('div2b').style.display = "block";
         }
         }
         function showDiv3(elem) {

@@ -1,5 +1,6 @@
 package com.art.controllers;
 
+import com.vmmc.entities.Tblsetupartinitiationcategory;
 import com.vmmc.entities.Facilities;
 import com.vmmc.entities.Facilityconfig;
 import com.vmmc.entities.Laboratory;
@@ -18,6 +19,10 @@ import com.vmmc.entities.Tblsetupadverseeventsstatus;
 import com.vmmc.entities.Tblsetuparvfixeddosecombinations;
 import com.vmmc.entities.Tblsetuparvreasoncodes;
 import com.vmmc.entities.Tblsetuparvstatuscodes;
+import com.vmmc.entities.Tblsetupcervicalcancertreatment;
+import com.vmmc.entities.Tblsetupcryptococcalinvestigation;
+import com.vmmc.entities.Tblsetupcryptococcalscreening;
+import com.vmmc.entities.Tblsetupcryptococcaltreatment;
 import com.vmmc.entities.Tblsetupdispensers;
 import com.vmmc.entities.Tblsetupfamilyplanning;
 import com.vmmc.entities.Tblsetupfunctionalstatus;
@@ -28,8 +33,10 @@ import com.vmmc.entities.Tblsetupproblems;
 import com.vmmc.entities.Tblsetupreferralsto;
 import com.vmmc.entities.Tblsetupstaff;
 import com.vmmc.entities.Tblsetupstatus;
+import com.vmmc.entities.Tblsetuptbinvestigation;
 import com.vmmc.entities.Tblsetuptbinvestigationresults;
 import com.vmmc.entities.Tblsetuptbstatus;
+import com.vmmc.entities.Tblsetuptpteligibility;
 import com.vmmc.entities.Tblsetuptpttype;
 import com.vmmc.entities.Tblsetupvisitstatus;
 import com.vmmc.entities.Tblsetupvisittypes;
@@ -114,6 +121,9 @@ public class OIARTVisitServ extends HttpServlet {
         List<Tblsetupvisittypes> visittypeslist = setup.getOIVisittypes();
         request.setAttribute("visittypes", visittypeslist);
 
+        List<Tblsetupartinitiationcategory> artcategories = setup.getArtCategoryTypes();
+        request.setAttribute("artcategories", artcategories);
+
         List<Tblsetupvisittypes> clinicalvisittypeslist = setup.getOICinicalVisittypes();
         request.setAttribute("clinicalvisittypeslist", clinicalvisittypeslist);
 
@@ -135,11 +145,26 @@ public class OIARTVisitServ extends HttpServlet {
         List<Tblsetuptbinvestigationresults> tbinvestigationresultslist = setup.getOITBInvestigationResults();
         request.setAttribute("tbinvestigationresults", tbinvestigationresultslist);
 
+        List<Tblsetuptbinvestigation> tbinvestigation = setup.getTbInvestigation();
+        request.setAttribute("tbinvestigation", tbinvestigation);
+
         List<Tblsetupiptstatus> iptstatuslist = setup.getOIIPTStatus();
         request.setAttribute("iptstatus", iptstatuslist);
 
-        List<Tblsetupiptreasoncodes> iptreasoncodeslist = setup.getOIIPTNoReasons();
-        request.setAttribute("iptreasoncodes", iptreasoncodeslist);
+        List<Tblsetuptpteligibility> istpteligibility = setup.getTptEligibility();
+        request.setAttribute("istpteligibility", istpteligibility);
+
+        List<Tblsetupcryptococcaltreatment> cryptococcaltreatment = setup.getCryptococcalTreatment();
+        request.setAttribute("cryptococcaltreatment", cryptococcaltreatment);
+
+        List<Tblsetupcryptococcalinvestigation> cryptococcalinvestigation = setup.getCryptococcalInvestigation();
+        request.setAttribute("cryptococcalinvestigation", cryptococcalinvestigation);
+
+        List<Tblsetupcryptococcalscreening> cryptococcalscreening = setup.getCryptococcalScreening();
+        request.setAttribute("cryptococcalscreening", cryptococcalscreening);
+
+        List<Tblsetupcervicalcancertreatment> cervicalcancertreatment = setup.getCervicalCancerTreatment();
+        request.setAttribute("cervicalcancertreatment", cervicalcancertreatment);
 
         List<Tblsetupproblems> problemslist = setup.getOIOpportunisticsInfect();
         request.setAttribute("opportunistic", problemslist);
@@ -184,9 +209,6 @@ public class OIARTVisitServ extends HttpServlet {
 
         List<Facilities> failitylist = setup.getFacilityTypes();
         request.setAttribute("failitylist", failitylist);
-
-        List<Tblsetuptpttype> tpttypelist = setup.getTptTypes();
-        request.setAttribute("tpttypelist", tpttypelist);
 
         OIArtVisitableImpl visimp = new OIArtVisitableImpl();
 
@@ -268,6 +290,7 @@ public class OIARTVisitServ extends HttpServlet {
             WhoClinicalStage = prevWhoClinicalStage;
         }
         String TBScreening = request.getParameter("slcOITBScreening");
+        String TBInvestigation = request.getParameter("slcOITBInvestigation");
         String TBInvestigationResult1 = request.getParameter("slcOITBInvestigationResult");
         int TBInvestigationResult = 0;
         if (TBInvestigationResult1 != null || TBInvestigationResult1 != "") {
@@ -293,48 +316,31 @@ public class OIARTVisitServ extends HttpServlet {
             }
         }
 
-        String IPTEligibility = request.getParameter("slcOIIPTEligibility");
-        String IPTStatus = request.getParameter("slcOIIPTStatus");
-        String[] ReasonForNotIPT = request.getParameterValues("slcOIReasonForNotIPT");
-//        String ReasonForNotIPT = null;
-//        ReasonForNotIPT1
-//        if (ReasonForNotIPT1 != null || ReasonForNotIPT1 != "") {
-//            if (!ReasonForNotIPT1.isEmpty()) {
-//                ReasonForNotIPT = ReasonForNotIPT1;
-//            }
-//        }
+        String TPTEligibility = request.getParameter("slcOIIPTEligibility");
+        String TPTStatus = request.getParameter("slcOIIPTStatus");
 
-        String IPTQuantiyDispensed1 = request.getParameter("txtOIIPTQuantiyDispensed");
-        int IPTQuantiyDispensed = 0;
-        if (IPTQuantiyDispensed1 != null || IPTQuantiyDispensed1 != "") {
-            if (!IPTQuantiyDispensed1.isEmpty()) {
-                IPTQuantiyDispensed = IPTQuantiyDispensed1.length() == 0 ? 0 : Integer.parseInt(IPTQuantiyDispensed1);
+        String TPTQuantiyDispensed1 = request.getParameter("txtOIIPTQuantiyDispensed");
+        int TPTQuantiyDispensed = 0;
+        if (TPTQuantiyDispensed1 != null || !"".equals(TPTQuantiyDispensed1)) {
+            if (!TPTQuantiyDispensed1.isEmpty()) {
+                TPTQuantiyDispensed = TPTQuantiyDispensed1.length() == 0 ? 0 : Integer.parseInt(TPTQuantiyDispensed1);
             }
         }
 
         String IPTAdherence1 = request.getParameter("txtOIIPTAdherence");
         int IPTAdherence = 0;
-        if (IPTAdherence1 != null || IPTAdherence1 != "") {
+        if (IPTAdherence1 != null || !"".equals(IPTAdherence1)) {
             if (!IPTAdherence1.isEmpty()) {
                 IPTAdherence = IPTAdherence1.length() == 0 ? 0 : Integer.parseInt(IPTAdherence1);
             }
         }
 
-        String FlzQuantiyPrescribed1 = request.getParameter("txtOIFlzQuantiyPrescribed");
-        int FlzQuantiyPrescribed = 0;
-        if (FlzQuantiyPrescribed1 != null || FlzQuantiyPrescribed1 != "") {
-            if (!FlzQuantiyPrescribed1.isEmpty()) {
-                FlzQuantiyPrescribed = FlzQuantiyPrescribed1.length() == 0 ? 0 : Integer.parseInt(FlzQuantiyPrescribed1);
-            }
-        }
-        String FlzQuantiyDispensed1 = request.getParameter("txtOIFlzQuantiyDispensed");
-        int FlzQuantiyDispensed = 0;
-        if (FlzQuantiyDispensed1 != null || FlzQuantiyDispensed1 != "") {
-            if (!FlzQuantiyDispensed1.isEmpty()) {
+        String cryptococcalscreening = request.getParameter("cryptococcalscreening");
+        String cryptococcalinvestigation = request.getParameter("cryptococcalinvestigation");
+        String cryptococcalinvestigationresult = request.getParameter("cryptococcalinvestigationresult");
+        String cryptococcaltreatment = request.getParameter("cryptococcaltreatment");
 
-                FlzQuantiyDispensed = FlzQuantiyDispensed1.length() == 0 ? 0 : Integer.parseInt(FlzQuantiyDispensed1);
-            }
-        }
+        String ARVInitiationCategory = request.getParameter("artinitiationcategory");
         String ARVStatus1 = request.getParameter("slcOIARVStatus");
 
         int ARVStatus = 0;
@@ -457,8 +463,13 @@ public class OIARTVisitServ extends HttpServlet {
                 OtherDiagnosis = OtherDiagnosis1.length() == 0 ? 0 : Float.parseFloat(OtherDiagnosis1);
             }
         }
+        
+        //Step 4
+        String txthpvresult = request.getParameter("txthpvresult");
+        String txtviacresult = request.getParameter("txtviacresult");
+        String txttreatment = request.getParameter("txttreatment");
 
-        //step 4
+        //step 5
         String TranferredTo = request.getParameter("slcOITransferredTo");
         String ReferredTo = request.getParameter("slcOIReferredTo");
         String NextReviwDate = request.getParameter("txtOINextReviwDate");
@@ -480,7 +491,7 @@ public class OIARTVisitServ extends HttpServlet {
             PharmacyDispenser = -1;
         }
         String notes = request.getParameter("txtOINotes");
-        
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
         /// Appointments 
@@ -571,24 +582,26 @@ public class OIARTVisitServ extends HttpServlet {
 
         visit.setTbstatusCode(TBScreening);
 
-        visit.setTbinvestigationResults(TBInvestigationResult);//parse
-        if (IPTEligibility != null) {
-            visit.setIsIpteligibility(IPTEligibility);
-        } else {
-            visit.setIsIpteligibility(null);
-        }
+        visit.setTbinvestigation(TBInvestigation);
 
-        visit.setIptstatusCode(IPTStatus);
+        visit.setTbinvestigationResults(TBInvestigationResult);//parse
+
+        visit.setCryptococcalInvestigation(cryptococcalinvestigation);
+
+        visit.setCryptococcalInvestigationResults(cryptococcalinvestigationresult);
+
+        visit.setCryptococcalScreening(cryptococcalscreening);
+
+        visit.setCryptococcalTreatment(cryptococcaltreatment);
+
+        visit.setIsIpteligibility(TPTEligibility);
+
+        visit.setIptstatusCode(TPTStatus);
 
         visit.setVisitStatusCode(VisitStatus);
 
-        if (ReasonForNotIPT != null) {
+        visit.setArvinitiationCategory(ARVInitiationCategory);
 
-            for (String g : ReasonForNotIPT) {
-                visit.setIptreasonCode(g);
-
-            }
-        }
         visit.setArvstatusCode(ARVStatus);
 
         visit.setArvreasonCode(ARVReason);
@@ -596,6 +609,12 @@ public class OIARTVisitServ extends HttpServlet {
         visit.setArvcode(ARVRegmenCombination);
 
         visit.setAdverseEventsStatusCode(AdverseEventStatus);
+        
+        visit.setCervicalCancerTreatment(txttreatment);
+        
+        visit.setHpvTestResult(txthpvresult);
+        
+        visit.setViacTestResult(txtviacresult);
 
         visit.setUserNumber(Clinician);
 
@@ -648,7 +667,7 @@ public class OIARTVisitServ extends HttpServlet {
             appDB.AddArtAppointment(appointment);
 
             ///follow up status
-            if (FollowUpStatus!= null) {
+            if (FollowUpStatus != null) {
                 if (!FollowUpStatus.isEmpty()) {
 
                     if (!FollowUpStatus.equalsIgnoreCase("TO")) {
@@ -823,7 +842,7 @@ public class OIARTVisitServ extends HttpServlet {
                         cd4test.setResultDate(lab.getReceivedDate());
                         cd4test.setTestDate(lab.getTestDate());
                         cd4test.setRecievedDate(lab.getPatientReceivedDate());
-                        
+
                         testDB.AddArtTest(cd4test);
                     }
 
@@ -846,7 +865,7 @@ public class OIARTVisitServ extends HttpServlet {
                         cd4perc.setTestTypeId(cdperc);
                         cd4perc.setResultNumeric(CDPercResult);//parse
                         cd4perc.setResultDate(cdPCollectionDate);
-                        
+
                         testDB.AddArtTest(cd4perc);
                     }
                 } else if (CDPOption.equalsIgnoreCase("AU")) {
@@ -866,7 +885,7 @@ public class OIARTVisitServ extends HttpServlet {
                         cd4perc.setResultDate(lab.getReceivedDate());
                         cd4perc.setTestDate(lab.getTestDate());
                         cd4perc.setRecievedDate(lab.getPatientReceivedDate());
-                        
+
                         testDB.AddArtTest(cd4perc);
                     }
                 }
@@ -888,7 +907,7 @@ public class OIARTVisitServ extends HttpServlet {
                         vl.setTestDate(fVLColletionDate); ///VLReceivedDate
                         vl.setRecievedDate(fVLReceivedDate);
                         vl.setResultNotes(VlNotes);
-                        
+
                         testDB.AddArtTest(vl);
                     }
                 } else if (VLOption.equalsIgnoreCase("AU")) {
@@ -909,7 +928,7 @@ public class OIARTVisitServ extends HttpServlet {
                         vl.setTestDate(lab.getTestDate());
                         vl.setRecievedDate(lab.getPatientReceivedDate());
                         vl.setResultNotes(VlNotes);
-                        
+
                         testDB.AddArtTest(vl);
                     }
 
@@ -944,7 +963,7 @@ public class OIARTVisitServ extends HttpServlet {
                     height.setTestTypeId(heightresult);
 
                     height.setResultNumeric(Height); //parse
-                    
+
                     testDB.AddArtTest(height);
                 }
                 //weight 
@@ -963,7 +982,7 @@ public class OIARTVisitServ extends HttpServlet {
                     weight.setTestDate(reviewDate);
                     weight.setRecievedDate(reviewDate);
                     weight.setResultNumeric(Weight);
-                    
+
                     testDB.AddArtTest(weight);
                 }
 
@@ -980,7 +999,7 @@ public class OIARTVisitServ extends HttpServlet {
                     alt.setRecievedDate(reviewDate);
                     alt.setTestTypeId(altresult);
                     alt.setResultNumeric(ATL); //parse
-                    
+
                     testDB.AddArtTest(alt);
                 }
                 //Creatinine 
@@ -1026,7 +1045,7 @@ public class OIARTVisitServ extends HttpServlet {
                 testDB.AddArtTest(tests);
             }
 
-            if (CotriQuantiyDispensed != 0 || IPTQuantiyDispensed != 0 || FlzQuantiyDispensed != 0 || ARVQuantityDispensed != 0) {
+            if (CotriQuantiyDispensed != 0 || TPTQuantiyDispensed != 0 || !cryptococcaltreatment.isEmpty() || ARVQuantityDispensed != 0) {
                 OIArtMedicationImpl medDB = new OIArtMedicationImpl();
 
                 // for cotrimoxazole
@@ -1050,21 +1069,29 @@ public class OIARTVisitServ extends HttpServlet {
                     medDB.AddArtMedication(cotmed);
 
                 } /// FOR IPT  
-                else if (IPTEligibility != null && IPTEligibility.equalsIgnoreCase("Yes")) {
+                else if (TPTEligibility != null && TPTEligibility.equalsIgnoreCase("Y")) {
+                    
+                    String tptstatus = "";
+                    if(TPTStatus.equalsIgnoreCase("II") || TPTStatus.equalsIgnoreCase("CT") || TPTStatus.equalsIgnoreCase("RI") || TPTStatus.equalsIgnoreCase("PB")){
+                        tptstatus = "TPT";
+                    }
+                    else if(TPTStatus.equalsIgnoreCase("3I") || TPTStatus.equalsIgnoreCase("R3")){
+                        tptstatus = "3HP";
+                    }
+                    
                     Tblmedication iptmed = new Tblmedication();
                     TblmedicationId iptmedid = new TblmedicationId();
 
-                    if (IPTQuantiyDispensed != 0) {
+                    if (TPTQuantiyDispensed != 0) {
                         iptmedid.setPatientId(patientId);
 
                         iptmedid.setVisitDate(reviewDate);
-                        String ipt = "IPT";
 
-                        iptmedid.setDrugTypeId(ipt);
+                        iptmedid.setDrugTypeId(tptstatus);
 
                         iptmed.setId(iptmedid);
 
-                        iptmed.setQuantityDisp(IPTQuantiyDispensed);
+                        iptmed.setQuantityDisp(TPTQuantiyDispensed);
 
                         iptmed.setPercentAdherence(IPTAdherence);
 
@@ -1073,26 +1100,34 @@ public class OIARTVisitServ extends HttpServlet {
                         medDB.AddArtMedication(iptmed);
                     }
                 } /// FOR IPT  
-                else if (IPTEligibility != null && IPTEligibility.equalsIgnoreCase("No")) {
+                else if (TPTEligibility != null && !TPTEligibility.equalsIgnoreCase("Y")) {
                     Tblmedication iptmed = new Tblmedication();
                     medDB.AddArtMedication(iptmed);
                 } /// FOR fluconazole
-                else if (FlzQuantiyDispensed != 0) {
+                else if (!cryptococcaltreatment.isEmpty()) {
+
+                    String treatment = "";
+
+                    if (cryptococcaltreatment.equalsIgnoreCase("a")) {
+                        treatment = "AFZ";
+                    } else if (cryptococcaltreatment.equalsIgnoreCase("b")) {
+                        treatment = "AFY";
+                    } else if (cryptococcaltreatment.equalsIgnoreCase("c")) {
+                        treatment = "FLU";
+                    } else {
+                        treatment = "OTH";
+                    }
+
                     Tblmedication flzmed = new Tblmedication();
                     TblmedicationId flzmedid = new TblmedicationId();
 
                     flzmedid.setPatientId(patientId);
 
                     flzmedid.setVisitDate(reviewDate);
-                    String flz = "FLU";
 
-                    flzmedid.setDrugTypeId(flz);
+                    flzmedid.setDrugTypeId(treatment);
 
                     flzmed.setId(flzmedid);
-
-                    flzmed.setQuantityDisp(FlzQuantiyDispensed);
-
-                    flzmed.setQuantityPrescribed(FlzQuantiyPrescribed);
 
                     medDB.AddArtMedication(flzmed);
                 } /// FOR ARVS

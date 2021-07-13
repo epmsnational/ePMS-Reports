@@ -1,5 +1,5 @@
 package com.vmmc.entities;
-// Generated Mar 25, 2021 10:55:32 AM by Hibernate Tools 4.3.1
+// Generated Jul 12, 2021 5:45:16 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -32,9 +32,18 @@ public class Tblvisits  implements java.io.Serializable {
      private Integer dispenserId;
      private Date dateOfFirstAnc;
      private Date lnmpdate;
+     private String tbinvestigation;
      private Integer tbinvestigationResults;
      private String isIpteligibility;
      private String iptstatusCode;
+     private String cryptococcalScreening;
+     private String cryptococcalInvestigation;
+     private String cryptococcalInvestigationResults;
+     private String cryptococcalTreatment;
+     private String arvinitiationCategory;
+     private String hpvTestResult;
+     private String viacTestResult;
+     private String cervicalCancerTreatment;
 
     public Tblvisits() {
     }
@@ -43,7 +52,7 @@ public class Tblvisits  implements java.io.Serializable {
     public Tblvisits(TblvisitsId id) {
         this.id = id;
     }
-    public Tblvisits(TblvisitsId id, String visitType, String visitTypeCode, String visitStatusCode, String nowPregnant, String familyPlanningId, String functionalStatusCode, Integer whostage, String tbstatusCode, String iptreasonCode, String typeOfTpt, Integer arvstatusCode, Integer arvreasonCode, Integer arvcode, String notes, Integer staffId, Integer userNumber, Date theTimeStamp, String adverseEventsStatusCode, Integer dispenserId, Date dateOfFirstAnc, Date lnmpdate, Integer tbinvestigationResults, String isIpteligibility, String iptstatusCode) {
+    public Tblvisits(TblvisitsId id, String visitType, String visitTypeCode, String visitStatusCode, String nowPregnant, String familyPlanningId, String functionalStatusCode, Integer whostage, String tbstatusCode, String iptreasonCode, String typeOfTpt, Integer arvstatusCode, Integer arvreasonCode, Integer arvcode, String notes, Integer staffId, Integer userNumber, Date theTimeStamp, String adverseEventsStatusCode, Integer dispenserId, Date dateOfFirstAnc, Date lnmpdate, String tbinvestigation, Integer tbinvestigationResults, String isIpteligibility, String iptstatusCode, String cryptococcalScreening, String cryptococcalInvestigation, String cryptococcalInvestigationResults, String cryptococcalTreatment, String arvinitiationCategory, String hpvTestResult, String viacTestResult, String cervicalCancerTreatment) {
        this.id = id;
        this.visitType = visitType;
        this.visitTypeCode = visitTypeCode;
@@ -66,9 +75,18 @@ public class Tblvisits  implements java.io.Serializable {
        this.dispenserId = dispenserId;
        this.dateOfFirstAnc = dateOfFirstAnc;
        this.lnmpdate = lnmpdate;
+       this.tbinvestigation = tbinvestigation;
        this.tbinvestigationResults = tbinvestigationResults;
        this.isIpteligibility = isIpteligibility;
        this.iptstatusCode = iptstatusCode;
+       this.cryptococcalScreening = cryptococcalScreening;
+       this.cryptococcalInvestigation = cryptococcalInvestigation;
+       this.cryptococcalInvestigationResults = cryptococcalInvestigationResults;
+       this.cryptococcalTreatment = cryptococcalTreatment;
+       this.arvinitiationCategory = arvinitiationCategory;
+       this.hpvTestResult = hpvTestResult;
+       this.viacTestResult = viacTestResult;
+       this.cervicalCancerTreatment = cervicalCancerTreatment;
     }
    
     public TblvisitsId getId() {
@@ -225,6 +243,13 @@ public class Tblvisits  implements java.io.Serializable {
     public void setLnmpdate(Date lnmpdate) {
         this.lnmpdate = lnmpdate;
     }
+    public String getTbinvestigation() {
+        return this.tbinvestigation;
+    }
+    
+    public void setTbinvestigation(String tbinvestigation) {
+        this.tbinvestigation = tbinvestigation;
+    }
     public Integer getTbinvestigationResults() {
         return this.tbinvestigationResults;
     }
@@ -245,6 +270,62 @@ public class Tblvisits  implements java.io.Serializable {
     
     public void setIptstatusCode(String iptstatusCode) {
         this.iptstatusCode = iptstatusCode;
+    }
+    public String getCryptococcalScreening() {
+        return this.cryptococcalScreening;
+    }
+    
+    public void setCryptococcalScreening(String cryptococcalScreening) {
+        this.cryptococcalScreening = cryptococcalScreening;
+    }
+    public String getCryptococcalInvestigation() {
+        return this.cryptococcalInvestigation;
+    }
+    
+    public void setCryptococcalInvestigation(String cryptococcalInvestigation) {
+        this.cryptococcalInvestigation = cryptococcalInvestigation;
+    }
+    public String getCryptococcalInvestigationResults() {
+        return this.cryptococcalInvestigationResults;
+    }
+    
+    public void setCryptococcalInvestigationResults(String cryptococcalInvestigationResults) {
+        this.cryptococcalInvestigationResults = cryptococcalInvestigationResults;
+    }
+    public String getCryptococcalTreatment() {
+        return this.cryptococcalTreatment;
+    }
+    
+    public void setCryptococcalTreatment(String cryptococcalTreatment) {
+        this.cryptococcalTreatment = cryptococcalTreatment;
+    }
+    public String getArvinitiationCategory() {
+        return this.arvinitiationCategory;
+    }
+    
+    public void setArvinitiationCategory(String arvinitiationCategory) {
+        this.arvinitiationCategory = arvinitiationCategory;
+    }
+    public String getHpvTestResult() {
+        return this.hpvTestResult;
+    }
+    
+    public void setHpvTestResult(String hpvTestResult) {
+        this.hpvTestResult = hpvTestResult;
+    }
+    public String getViacTestResult() {
+        return this.viacTestResult;
+    }
+    
+    public void setViacTestResult(String viacTestResult) {
+        this.viacTestResult = viacTestResult;
+    }
+    public String getCervicalCancerTreatment() {
+        return this.cervicalCancerTreatment;
+    }
+    
+    public void setCervicalCancerTreatment(String cervicalCancerTreatment) {
+        this.cervicalCancerTreatment = cervicalCancerTreatment;
     }
 
 

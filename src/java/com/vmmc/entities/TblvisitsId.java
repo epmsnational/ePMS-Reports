@@ -1,5 +1,5 @@
 package com.vmmc.entities;
-// Generated Mar 25, 2021 10:55:32 AM by Hibernate Tools 4.3.1
+// Generated Jul 12, 2021 5:45:16 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,30 +10,30 @@ import java.util.Date;
 public class TblvisitsId  implements java.io.Serializable {
 
 
-     private Date visitDate;
      private String patientId;
+     private Date visitDate;
 
     public TblvisitsId() {
     }
 
-    public TblvisitsId(Date visitDate, String patientId) {
-       this.visitDate = visitDate;
+    public TblvisitsId(String patientId, Date visitDate) {
        this.patientId = patientId;
+       this.visitDate = visitDate;
     }
    
-    public Date getVisitDate() {
-        return this.visitDate;
-    }
-    
-    public void setVisitDate(Date visitDate) {
-        this.visitDate = visitDate;
-    }
     public String getPatientId() {
         return this.patientId;
     }
     
     public void setPatientId(String patientId) {
         this.patientId = patientId;
+    }
+    public Date getVisitDate() {
+        return this.visitDate;
+    }
+    
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
     }
 
 
@@ -43,15 +43,15 @@ public class TblvisitsId  implements java.io.Serializable {
 		 if ( !(other instanceof TblvisitsId) ) return false;
 		 TblvisitsId castOther = ( TblvisitsId ) other; 
          
-		 return ( (this.getVisitDate()==castOther.getVisitDate()) || ( this.getVisitDate()!=null && castOther.getVisitDate()!=null && this.getVisitDate().equals(castOther.getVisitDate()) ) )
- && ( (this.getPatientId()==castOther.getPatientId()) || ( this.getPatientId()!=null && castOther.getPatientId()!=null && this.getPatientId().equals(castOther.getPatientId()) ) );
+		 return ( (this.getPatientId()==castOther.getPatientId()) || ( this.getPatientId()!=null && castOther.getPatientId()!=null && this.getPatientId().equals(castOther.getPatientId()) ) )
+ && ( (this.getVisitDate()==castOther.getVisitDate()) || ( this.getVisitDate()!=null && castOther.getVisitDate()!=null && this.getVisitDate().equals(castOther.getVisitDate()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + ( getVisitDate() == null ? 0 : this.getVisitDate().hashCode() );
          result = 37 * result + ( getPatientId() == null ? 0 : this.getPatientId().hashCode() );
+         result = 37 * result + ( getVisitDate() == null ? 0 : this.getVisitDate().hashCode() );
          return result;
    }   
 

@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 25, 2021 10:55:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 12, 2021 5:45:16 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.vmmc.entities.Tblvisits" table="tblvisits" catalog="zimepms" optimistic-lock="version">
         <composite-id name="id" class="com.vmmc.entities.TblvisitsId">
-            <key-property name="visitDate" type="timestamp">
-                <column name="VisitDate" length="19" />
-            </key-property>
             <key-property name="patientId" type="string">
                 <column name="PatientID" length="21" />
+            </key-property>
+            <key-property name="visitDate" type="timestamp">
+                <column name="VisitDate" length="19" />
             </key-property>
         </composite-id>
         <property name="visitType" type="string">
@@ -75,6 +75,9 @@
         <property name="lnmpdate" type="date">
             <column name="LNMPDate" length="10" />
         </property>
+        <property name="tbinvestigation" type="string">
+            <column name="TBInvestigation" length="45" />
+        </property>
         <property name="tbinvestigationResults" type="java.lang.Integer">
             <column name="TBInvestigationResults" />
         </property>
@@ -83,6 +86,30 @@
         </property>
         <property name="iptstatusCode" type="string">
             <column name="IPTStatusCode" length="4" />
+        </property>
+        <property name="cryptococcalScreening" type="string">
+            <column name="CryptococcalScreening" length="4" />
+        </property>
+        <property name="cryptococcalInvestigation" type="string">
+            <column name="CryptococcalInvestigation" length="4" />
+        </property>
+        <property name="cryptococcalInvestigationResults" type="string">
+            <column name="CryptococcalInvestigationResults" length="10" />
+        </property>
+        <property name="cryptococcalTreatment" type="string">
+            <column name="CryptococcalTreatment" length="4" />
+        </property>
+        <property name="arvinitiationCategory" type="string">
+            <column name="ARVInitiationCategory" length="4" />
+        </property>
+        <property name="hpvTestResult" type="string">
+            <column name="HpvTestResult" length="10" />
+        </property>
+        <property name="viacTestResult" type="string">
+            <column name="ViacTestResult" length="10" />
+        </property>
+        <property name="cervicalCancerTreatment" type="string">
+            <column name="CervicalCancerTreatment" length="4" />
         </property>
     </class>
 </hibernate-mapping>
