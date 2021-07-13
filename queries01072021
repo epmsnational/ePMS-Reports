@@ -1,0 +1,149 @@
+CREATE TABLE zimepms.tblsetuppatientprofile (
+	PatientProfileCode CHAR NOT NULL,
+	PatientProfileDescription varchar(100) NULL,
+	PRIMARY KEY (PatientProfileCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetuppatientprofile(PatientProfileCode, PatientProfileDescription) VALUES('A', 'General Population'),
+('B', 'Sex worker'),('C', 'Men having sex with men (MSM)'),('D', 'Women having sex with women (WSW)'),('E', 'People who use drugs (PWUD)'),
+('F', 'People who inject drugs (PWID)'),('G', 'Transgender'),('H', 'Other specify');
+
+CREATE TABLE zimepms.tblsetupcryptococcalscreening (
+	CryptococcalScreeningCode varchar(100) NOT NULL,
+	CryptococcalScreeningDescription varchar(100) NULL,
+	PRIMARY KEY (CryptococcalScreeningCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetupcryptococcalscreening
+(CryptococcalScreeningCode, CryptococcalScreeningDescription)
+VALUES('Y', 'Screened has no signs'),('S', 'Presumptive Cryptococcal signs'),('ON', 'On Cryptococal treatment'),('N', 'Not assessed');
+
+CREATE TABLE zimepms.tblsetupcryptococcalinvestigation (
+	CryptococcalInvestigationCode varchar(100) NOT NULL,
+	CryptococcalInvestigationDescription varchar(100) NULL,
+	PRIMARY KEY (CryptococcalInvestigationCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetupcryptococcalinvestigation
+(CryptococcalInvestigationCode, CryptococcalInvestigationDescription)
+VALUES('1', 'Serum CrAg.'),('2', 'CSF CrAg');
+
+CREATE TABLE zimepms.tblsetupcryptococcaltreatment (
+	CryptococcalTreatmentCode varchar(100) NOT NULL,
+	CryptococcalTreatmentDescription varchar(100) NULL,
+	PRIMARY KEY (CryptococcalTreatmentCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetupcryptococcaltreatment
+(CryptococcalTreatmentCode, CryptococcalTreatmentDescription)
+VALUES('a', 'Amphotericin B and Fluconazole'),('b', 'Amphotericin B and Flucytosine'),('c', 'Fluconazole only'),('d', 'Others specify');
+
+CREATE TABLE zimepms.tblsetupcervicalcancertreatment (
+	CervicalCancerTreatmentCode varchar(100) NOT NULL,
+	CervicalCancerTreatmentDescription varchar(100) NULL,
+	PRIMARY KEY (CervicalCancerTreatmentCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetupcervicalcancertreatment
+(CervicalCancerTreatmentCode, CervicalCancerTreatmentDescription) VALUES
+('N', 'No treatment done'),('VC', 'VIAC Pos, Cryotherapy Done'),('VT', 'VIAC Pos, Thermal Ablation done'),('VL', 'VIAC Pos, LEEP Done'),
+('SC', 'Suspected Cancer'),('H', 'Hysterectomy'),('R', 'Refer for Further clinical investigation if HPV Neg, but VIAC Pos.');
+
+INSERT INTO zimepms.tblsetuparvreasoncodes
+(ARVReasonCode, ARVReason, ReasonCategory, MedEligible, Ready)
+VALUES(215, 'Treat all', '', 0, 0),(216, 'Pregnant women', '', 0, 0),(217, 'Lactation women', '', 0, 0),(218, 'Other(Specify)', '', 0, 0);
+
+CREATE TABLE zimepms.tblsetupartinitiationcategory (
+	ArtInitiationCategoryCode varchar(100) NOT NULL,
+	ArtInitiationCategoryDescription varchar(100) NULL,
+	PRIMARY KEY (ArtInitiationCategoryCode)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO zimepms.tblsetupartinitiationcategory
+(ArtInitiationCategoryCode, ArtInitiationCategoryDescription) VALUES
+('N1', 'Newly Initiated ART'),('N2', 'Reinitiation after stopping ART'),
+('N3', 'Reinitiation after lost to follow up'),('N4', 'ART Initiation from the private sector or diaspora');
+
+ALTER TABLE `zimepms`.`tblvisits` 
+DROP COLUMN `RegDate`,
+DROP COLUMN `Status`,
+DROP COLUMN `Sex`,
+DROP COLUMN `DOB`;
+
+ALTER TABLE `zimepms`.`tblvisits` 
+ADD COLUMN `TBInvestigation` VARCHAR(45) NULL DEFAULT NULL AFTER `LNMPDate`,
+ADD COLUMN `CryptococcalScreening` VARCHAR(4) NULL DEFAULT NULL AFTER `IPTStatusCode`,
+ADD COLUMN `CryptococcalInvestigation` VARCHAR(4) NULL DEFAULT NULL AFTER `CryptococcalScreening`,
+ADD COLUMN `CryptococcalInvestigationResults` VARCHAR(10) NULL DEFAULT NULL AFTER `CryptococcalInvestigation`,
+ADD COLUMN `CryptococcalTreatment` VARCHAR(4) NULL DEFAULT NULL AFTER `CryptococcalInvestigationResults`,
+ADD COLUMN `ARVInitiationCategory` VARCHAR(4) NULL DEFAULT NULL AFTER `CryptococcalTreatment`,
+ADD COLUMN `HpvTestResult` VARCHAR(10) NULL DEFAULT NULL AFTER `ARVInitiationCategory`,
+ADD COLUMN `ViacTestResult` VARCHAR(10) NULL DEFAULT NULL AFTER `HpvTestResult`,
+ADD COLUMN `CervicalCancerTreatment` VARCHAR(4) NULL DEFAULT NULL AFTER `ViacTestResult`,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`PatientID`, `VisitDate`);
+
+
+CREATE TABLE `zimepms`.`tblsetuptpteligibility` (
+  `TptEligibilityCode` VARCHAR(4) NOT NULL,
+  `TptEligibilityDescription` VARCHAR(45) NULL,
+  PRIMARY KEY (`TptEligibilityCode`));
+  
+  INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('Y', 'Eligible For TPT');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('TB', 'Active TB disease');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('ON', 'On TB treatment');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('AL', 'Active liver disease');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('AA', 'Heavy alcohol abuse');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('CPT', 'Completed TPT in the past 3yrs');
+INSERT INTO `zimepms`.`tblsetuptpteligibility` (`TptEligibilityCode`, `TptEligibilityDescription`) VALUES ('DDI', 'Drug to interaction');
+
+
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('3I', '3HP initiated');
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCode` = 'CT' WHERE (`IPTStatusCode` = 'CI');
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCode` = 'TC' WHERE (`IPTStatusCode` = 'IC');
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCode` = 'AT', `IPTStatusCodeDescription` = 'TPT Stopped due to client developing active TB disease' WHERE (`IPTStatusCode` = 'IS');
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('BP', 'Client became pregnant and changed from 3HP to TPT');
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('R3', 'Restart 3HP');
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCode` = 'TNI', `IPTStatusCodeDescription` = 'TPT Not Initaited due to available regimens' WHERE (`IPTStatusCode` = 'INI');
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('PN', 'TPT Stopped due to Peripheral Neuropathy');
+INSERT INTO `zimepms`.`tblsetupiptstatus` (`IPTStatusCode`, `IPTStatusCodeDescription`) VALUES ('PP', 'Patient Refused TPT');
+DELETE FROM `zimepms`.`tblsetupiptstatus` WHERE (`IPTStatusCode` = 'N/A');
+
+CREATE TABLE `zimepms`.`Tblsetuptbinvestigation` (
+  `TbInvestigationID` INT NOT NULL,
+  `TbInvestigation` VARCHAR(45) NULL,
+  PRIMARY KEY (`TbInvestigationID`));
+  
+  INSERT INTO `zimepms`.`Tblsetuptbinvestigation` (`TbInvestigationID`, `TbInvestigation`) VALUES ('1', 'Xpert MTB/Rif');
+INSERT INTO `zimepms`.`Tblsetuptbinvestigation` (`TbInvestigationID`, `TbInvestigation`) VALUES ('2', '(Ultra)LF-LAM');
+INSERT INTO `zimepms`.`Tblsetuptbinvestigation` (`TbInvestigationID`, `TbInvestigation`) VALUES ('3', 'TST (Children)');
+
+ALTER TABLE `zimepms`.`Tblsetuptbinvestigation` 
+RENAME TO  `zimepms`.`tblsetuptbinvestigation` ;
+
+UPDATE `zimepms`.`tblsetupvisitstatus` SET `visitstatusdescription` = 'Default (<28days)' WHERE (`visitstatuscode` = 'D');
+UPDATE `zimepms`.`tblsetupvisitstatus` SET `visitstatusdescription` = 'Lost to Follow up greater or equal 28' WHERE (`visitstatuscode` = 'LO');
+
+INSERT INTO `zimepms`.`tblsetupstatus` (`Status`, `StatusCode`) VALUES ('Other, specify', 'O');
+
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'Client became pregnant and changed from 3HP to TPT' WHERE (`IPTStatusCode` = 'BP');
+UPDATE `zimepms`.`tblsetupiptstatus` SET `IPTStatusCodeDescription` = 'Active TB disease' WHERE (`IPTStatusCode` = 'AT');
+
