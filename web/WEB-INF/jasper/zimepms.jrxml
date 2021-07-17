@@ -73,16 +73,16 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="80" splitType="Stretch">
+		<band height="93" splitType="Stretch">
 			<textField>
-				<reportElement x="480" y="-10" width="500" height="30" uuid="4ef4f630-3e5a-429c-96d0-ac8a8921b675"/>
+				<reportElement x="530" y="-10" width="410" height="30" uuid="4ef4f630-3e5a-429c-96d0-ac8a8921b675"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="30" width="1480" height="50" uuid="4e6cbad9-2c53-4e68-9d2a-4d382e536bd4"/>
+				<reportElement x="180" y="30" width="1100" height="50" uuid="4e6cbad9-2c53-4e68-9d2a-4d382e536bd4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>

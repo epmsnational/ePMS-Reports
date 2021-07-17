@@ -128,7 +128,19 @@ public class SetupServiceImpl implements SetupService {
         Session session = sessionFactory.openSession();
          List<Tblsetuptpteligibility> pList = null;
         try {
-            pList = session.createQuery("from Tblsetuptpteligibility").list();
+            pList = session.createQuery("from Tblsetuptpteligibility where tptEligibilityCode = 'Y'").list();
+            return pList;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public List<Tblsetuptpteligibility> getTptNotEligibility(){
+        SessionFactory sessionFactory = VmmcUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+         List<Tblsetuptpteligibility> pList = null;
+        try {
+            pList = session.createQuery("from Tblsetuptpteligibility where tptEligibilityCode != 'Y'").list();
             return pList;
         } finally {
             session.close();

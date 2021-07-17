@@ -64,6 +64,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.print.attribute.standard.MediaSize.Other;
@@ -153,6 +154,9 @@ public class OIARTVisitServ extends HttpServlet {
 
         List<Tblsetuptpteligibility> istpteligibility = setup.getTptEligibility();
         request.setAttribute("istpteligibility", istpteligibility);
+        
+        List<Tblsetuptpteligibility> isnottpteligibility = setup.getTptNotEligibility();
+        request.setAttribute("isnottpteligibility", isnottpteligibility);
 
         List<Tblsetupcryptococcaltreatment> cryptococcaltreatment = setup.getCryptococcalTreatment();
         request.setAttribute("cryptococcaltreatment", cryptococcaltreatment);
@@ -316,7 +320,19 @@ public class OIARTVisitServ extends HttpServlet {
             }
         }
 
+        String TptNotEligibility = request.getParameter("tptnoteligible");
         String TPTEligibility = request.getParameter("slcOIIPTEligibility");
+        String TptEligibilityValue = null;
+        
+        if(TPTEligibility.equalsIgnoreCase("Y")){
+            TptEligibilityValue = TPTEligibility;
+        }
+        else if(TPTEligibility.equalsIgnoreCase("N")){
+            TptEligibilityValue = TptNotEligibility;
+        }
+        else{
+            TptEligibilityValue = null;
+        }
         String TPTStatus = request.getParameter("slcOIIPTStatus");
 
         String TPTQuantiyDispensed1 = request.getParameter("txtOIIPTQuantiyDispensed");
@@ -491,9 +507,21 @@ public class OIARTVisitServ extends HttpServlet {
             PharmacyDispenser = -1;
         }
         String notes = request.getParameter("txtOINotes");
-
+        
+        String timeNow = new SimpleDateFormat("dd-MM-YYYY hh:mm:ss").format(Calendar.getInstance().getTime());
+        
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        
+        Timestamp theTimestamp = null;
+        try{
+            Date dateNow = formatter.parse(timeNow);
+            theTimestamp = new java.sql.Timestamp(dateNow.getTime());
+        }
+        catch (Exception pe) {
+            pe.printStackTrace();
+        }
 
+        
         /// Appointments 
         Timestamp reviewDate = null;//DateOfReview
 
@@ -594,7 +622,7 @@ public class OIARTVisitServ extends HttpServlet {
 
         visit.setCryptococcalTreatment(cryptococcaltreatment);
 
-        visit.setIsIpteligibility(TPTEligibility);
+        visit.setIsIpteligibility(TptEligibilityValue);
 
         visit.setIptstatusCode(TPTStatus);
 
@@ -619,7 +647,10 @@ public class OIARTVisitServ extends HttpServlet {
         visit.setUserNumber(Clinician);
 
         visit.setDispenserId(PharmacyDispenser);
+        
         visit.setNotes(notes);
+        
+        visit.setTheTimeStamp(theTimestamp);
 
         if (vstDB.AddArtVisit(visit) == 1) {
             OIArtReferredToImpl referalDB = new OIArtReferredToImpl();

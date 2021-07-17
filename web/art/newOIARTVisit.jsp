@@ -250,14 +250,28 @@
                                                 <c:forEach var="istpteligibility" items="${istpteligibility}">
                                                     <option value="${istpteligibility.tptEligibilityCode}">${istpteligibility.tptEligibilityDescription}</option>
                                                 </c:forEach> 
+                                                <option value="N">Not Eligible</option>
                                             </select>
 
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div id="div2c" style="color: blue;display: none">
+                                            <div class="col-lg-2" style="color: blue;"><b> Reason Not Eligible:</b></div>
+                                            <div class="col-lg-4">
 
-                                    <div class="form-group" style="color: blue;">
 
-                                        <div id="div2a" style="display: none;">
+                                                <select name ="tptnoteligible" class="form-control">
+                                                    <option> </option>
+                                                    <c:forEach var="isnottpteligibility" items="${isnottpteligibility}">
+                                                        <option value="${isnottpteligibility.tptEligibilityCode}">${isnottpteligibility.tptEligibilityDescription}</option>
+                                                    </c:forEach> 
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div id="div2a" style="color: blue;display: none;">
                                             <div class="col-lg-2" style="color: blue;"><b> TPT STATUS:</b></div>
                                             <div class="col-lg-4">
                                                 <select name="slcOIIPTStatus" class="form-control" onchange="showDivT(this)">
@@ -284,17 +298,17 @@
                                         </div>
                                     </div><hr>
                                     <div class="col-lg-12" style="color: red;"><h3>CRYPTOCOCCAL STATUS :</h3></div>
-                                    <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL SCREENING:</b></div>
-                                    <div class="col-lg-4">
-                                        <select name ="cryptococcalscreening" class="form-control">
-                                            <option> </option>
-                                            <c:forEach var="cryptococcalscreening" items="${cryptococcalscreening}">
-                                                <option value="${cryptococcalscreening.cryptococcalScreeningCode}">${cryptococcalscreening.cryptococcalScreeningDescription}</option>
-                                            </c:forEach> 
-                                        </select>
-
-                                    </div>
                                     <div class="form-group">
+                                        <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL SCREENING:</b></div>
+                                        <div class="col-lg-4">
+                                            <select name ="cryptococcalscreening" class="form-control">
+                                                <option> </option>
+                                                <c:forEach var="cryptococcalscreening" items="${cryptococcalscreening}">
+                                                    <option value="${cryptococcalscreening.cryptococcalScreeningCode}">${cryptococcalscreening.cryptococcalScreeningDescription}</option>
+                                                </c:forEach> 
+                                            </select>
+
+                                        </div>
                                         <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL INVESTIGATION DONE:</b></div>
                                         <div class="col-lg-4">
                                             <select name ="cryptococcalinvestigation" class="form-control">
@@ -314,8 +328,6 @@
                                                 <option value="Negative">Negative</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
                                         <div class="col-lg-2" style="color: blue;"><b> CRYPTOCOCCAL TREATMENT DONE:</b></div>
                                         <div class="col-lg-4">
                                             <select name ="cryptococcaltreatment" class="form-control">
@@ -650,7 +662,7 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                
+
                                 <fieldset title="Step 4" class="step" id="default-step-3" >
                                     <legend> Cervical Cancer Screening:<p>HPV Test/VIAC</p></legend>
                                     <div class="form-group" style="color: blue;">
@@ -676,14 +688,14 @@
                                         <div class="col-lg-3">
                                             <select name="txttreatment" class="form-control">
                                                 <option> </option>
-                                                    <c:forEach var="cervicalcancertreatment" items="${cervicalcancertreatment}">
-                                                        <option value="${cervicalcancertreatment.cervicalCancerTreatmentCode}">${cervicalcancertreatment.cervicalCancerTreatmentDescription}</option>
-                                                    </c:forEach>
+                                                <c:forEach var="cervicalcancertreatment" items="${cervicalcancertreatment}">
+                                                    <option value="${cervicalcancertreatment.cervicalCancerTreatmentCode}">${cervicalcancertreatment.cervicalCancerTreatmentDescription}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>
                                 </fieldset>
-                                
+
                                 <fieldset title="Step 5" class="step" id="default-step-4" >
                                     <legend> Followup & Outcome </legend>
                                     <div >
@@ -955,14 +967,17 @@
         if (elem.value == 'Y') {
         document.getElementById('div2a').style.display = "block";
                 document.getElementById('div2b').style.display = "block";
+                document.getElementById('div2c').style.display = "none";
         }
-        if (elem.value == '') {
-        document.getElementById('div2a').style.display = "none";
-                document.getElementById('div2b').style.display = "none";
-        }
-        else {
+        else if (elem.value == 'N') {
         document.getElementById('div2a').style.display = "block";
                 document.getElementById('div2b').style.display = "block";
+                document.getElementById('div2c').style.display = "block";
+        }
+        else {
+        document.getElementById('div2a').style.display = "none";
+                document.getElementById('div2b').style.display = "none";
+                document.getElementById('div2c').style.display = "none";
         }
         }
         function showDiv3(elem) {
